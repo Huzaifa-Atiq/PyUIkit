@@ -33,7 +33,7 @@ pip install pyhtmlkit
 ```
 
 ### 2. Create your first window
-```bash
+```python
 from pyhtmlkit import Body
 
 app = Body(title="My First App", width=600, height=400, bg_color="#f5f5f5")
@@ -41,7 +41,7 @@ app.run()
 ```
 
 ### 3. Add a Div container
-```bash
+```python
 from pyhtmlkit import Div
 
 Div(
@@ -57,7 +57,7 @@ Div(
 ```
 
 ### 4. Add Text inside a Div
-```bash
+```python
 from pyhtmlkit.components import Text
 
 Div(
@@ -75,7 +75,7 @@ Div(
 ```
 
 ### 5. Update Text dynamically
-```bash
+```python
 from pyhtmlkit.components import Text
 
 # Change text after some action
@@ -84,3 +84,9 @@ Text.set_color("mainText", "#ff0000")
 Text.set_font_size("mainText", 30)
 
 ```
+
+## 📚 Components Documentation
+
+For detailed usage of individual components, check the docs:
+
+- [Div Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Div.md)
