@@ -1,6 +1,6 @@
-# PyHtmlKit
+# PyUIkit
 
-PyHtmlKit is a Python library for building desktop applications with a **simple, HTML-like syntax**.  
+PyUIkit is a Python library for building desktop applications with a **simple, HTML-like syntax**.  
 It aims to bring **simplicity and web-like component structure** to Python GUI development, allowing developers to create windows, divs, and components without dealing with complex layout management.  
 The interface is built on **CustomTkinter**, making it lightweight, modern, and easy to use.
 
@@ -29,12 +29,12 @@ The interface is built on **CustomTkinter**, making it lightweight, modern, and 
 
 ### 1. Install
 ```bash
-pip install pyhtmlkit
+pip install pyuikit
 ```
 
 ### 2. Create your first window
 ```python
-from pyhtmlkit import Body
+from pyuikit import Body
 
 app = Body(title="My First App", width=600, height=400, bg_color="#f5f5f5")
 app.run()
@@ -42,7 +42,7 @@ app.run()
 
 ### 3. Add a Div container
 ```python
-from pyhtmlkit import Div
+from pyuikit import Div
 
 Div(
     x=50,
@@ -58,7 +58,7 @@ Div(
 
 ### 4. Add Text inside a Div
 ```python
-from pyhtmlkit.components import Text
+from pyuikit.components import Text
 
 Div(
     x=50,
@@ -68,7 +68,7 @@ Div(
     bg_color="#eaeaea",
     padding=10,
     children=[
-        Text(text="Hello PyHtmlKit!", color="#333", font_size=20, id="mainText")
+        Text(text="Hello PyUIkit!", color="#333", font_size=20, id="mainText")
     ],
     id="mainDiv"
 )
@@ -76,7 +76,7 @@ Div(
 
 ### 5. Update Text dynamically
 ```python
-from pyhtmlkit.components import Text
+from pyuikit.components import Text
 
 # Change text after some action
 Text.set_text("mainText", "Updated Text!")
@@ -89,8 +89,8 @@ Text.set_font_size("mainText", 30)
 
 For detailed usage of individual components, check the docs:
 
-- [Div Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Div.md)
-- [Button Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Button.md)
-- [Text Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Text.md)
-- [Input Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Input.md)
-- [FileDialog Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/FileDialog.md)
+- [Div Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Div.md)
+- [Button Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Button.md)
+- [Text Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Text.md)
+- [Input Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Input.md)
+- [FileDialog Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/FileDialog.md)

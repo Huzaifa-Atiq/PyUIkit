@@ -37,8 +37,8 @@ It cannot exist on its own.
 ### 🔹 Example 1 — Basic Text (Auto Placement)
 
 ```python
-from pyhtmlkit.components import Text
-from pyhtmlkit import Div
+from pyuikit.components import Text
+from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -52,8 +52,8 @@ Div(
 ### 🔹 Example 2 — Text With Absolute Position (x AND y required)
 
 ```python
-from pyhtmlkit.components import Text
-from pyhtmlkit import Div
+from pyuikit.components import Text
+from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -67,8 +67,8 @@ Div(
 
 ### 🔹 Example 3 — Using id for Dynamic Updates
 ```python
-from pyhtmlkit.components import Text
-from pyhtmlkit import Div
+from pyuikit.components import Text
+from pyuikit import Div
 
 Div(
     x=20, y=20,

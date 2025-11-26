@@ -44,8 +44,8 @@ An `Input` component **must always be placed inside a Div**.
 ## 🔹 Example 1 — Basic Input (Auto Placement)
 
 ```python
-from pyhtmlkit.components import Input
-from pyhtmlkit import Div
+from pyuikit.components import Input
+from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -59,8 +59,8 @@ Div(
 ## 🔹 Example 2 — Input With Absolute Position
 
 ```python
-from pyhtmlkit.components import Input
-from pyhtmlkit import Div
+from pyuikit.components import Input
+from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -81,8 +81,8 @@ Div(
 ## 🔹 Example 3 — Multi-line Input (Textarea Style)
 
 ```python
-from pyhtmlkit.components import Input
-from pyhtmlkit import Div
+from pyuikit.components import Input
+from pyuikit import Div
 
 Div(
     x=10, y=10,
@@ -101,8 +101,8 @@ Div(
 ## 🔹 Example 4 — Getting & Setting Input Text Dynamically
 
 ```python
-from pyhtmlkit.components import Input
-from pyhtmlkit import Div
+from pyuikit.components import Input
+from pyuikit import Div
 
 Div(
     x=20, y=20,

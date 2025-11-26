@@ -1,6 +1,6 @@
 ## FileDialog Component
 
-`FileDialog` is a **file picker component** in PyHtmlKit that allows users to **select or save files**.  
+`FileDialog` is a **file picker component** in PyUIkit that allows users to **select or save files**.  
 You can style it, set a placeholder, and retrieve the selected file path easily.
 
 ---
@@ -39,8 +39,8 @@ Retrieve the currently selected file path by the FileDialog's `id`.
 
 ### 🔹 Example Usage
 ```python
-from pyhtmlkit import Body, Div
-from pyhtmlkit.components import FileDialog, Button, Text
+from pyuikit import Body, Div
+from pyuikit.components import FileDialog, Button, Text
 
 # Callback function
 def show_file_path():

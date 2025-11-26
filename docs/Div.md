@@ -1,6 +1,6 @@
 ## Div Component
 
-A `Div` in PyHtmlKit is like a **box or container** that can hold other UI components such as `Text`, `Button`, or `Input`.  
+A `Div` in PyUIkit is like a **box or container** that can hold other UI components such as `Text`, `Button`, or `Input`.  
 Think of it like a section on a webpage where you can put things together to organize your interface neatly.
 
 ### 🔹 Nested Divs
@@ -45,8 +45,8 @@ If you use `x` and `y`, the Div will use absolute positioning instead and paddin
 ### 🔹 Example — Basic Div
 
 ```python
-from pyhtmlkit import Body, Div
-from pyhtmlkit.components import Text, Button
+from pyuikit import Body, Div
+from pyuikit.components import Text, Button
 
 # Example 1 — Basic Div With Text
 Div(

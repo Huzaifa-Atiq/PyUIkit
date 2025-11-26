@@ -1,6 +1,6 @@
 ## Button Component
 
-`Button` is an interactive component in PyHtmlKit used to trigger actions when clicked.  
+`Button` is an interactive component in PyUIkit used to trigger actions when clicked.  
 It behaves similarly to an HTML `<button>` and supports **absolute positioning**, custom colors, dynamic updates, and click events.
 
 ---
@@ -50,8 +50,8 @@ It behaves similarly to an HTML `<button>` and supports **absolute positioning**
 
 ### ✅ Example 1 — Simple Button inside a Div
 ```python
-from pyhtmlkit import Div
-from pyhtmlkit.components import Button
+from pyuikit import Div
+from pyuikit.components import Button
 
 Div(
     x=50,
@@ -71,11 +71,11 @@ Div(
 
 ### ✅ Example 2 — Button with Click Event
 ```python
-from pyhtmlkit import Div
-from pyhtmlkit.components import Button
+from pyuikit import Div
+from pyuikit.components import Button
 
 def say_hello():
-    print("Hello from PyHtmlKit!")
+    print("Hello from PyUIkit!")
 
 Div(
     x=50,
@@ -96,8 +96,8 @@ Div(
 
 ### ✅ Example 3 — Dynamic Updates Using id
 ```python
-from pyhtmlkit import Div
-from pyhtmlkit.components import Button
+from pyuikit import Div
+from pyuikit.components import Button
 
 def change_button():
     Button.set_text("myButton", "Updated!")
