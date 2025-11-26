@@ -90,3 +90,6 @@ Text.set_font_size("mainText", 30)
 For detailed usage of individual components, check the docs:
 
 - [Div Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Div.md)
+- [Button Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Button.md)
+- [Text Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Text.md)
+- [Input Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Input.md)

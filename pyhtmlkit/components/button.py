@@ -13,7 +13,9 @@ class Button:
         corner_radius=8,
         color="#3b82f6",
         text_color="#ffffff",
-        on_click=None
+        on_click=None,
+        padx=0,
+        pady=0
     ):
         self.text = text
         self.id = id
@@ -25,6 +27,8 @@ class Button:
         self.color = color
         self.text_color = text_color
         self.on_click = on_click
+        self.padx = padx
+        self.pady = pady
         self.button = None
 
     def render(self, parent):
@@ -46,7 +50,7 @@ class Button:
         if self.x is not None and self.y is not None:
             self.button.place(x=self.x, y=self.y)
         else:
-            self.button.pack()
+            self.button.pack(padx=self.padx, pady=self.pady)
 
         # Register ID for updates
         if self.id:

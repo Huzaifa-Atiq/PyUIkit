@@ -2,7 +2,7 @@ from customtkinter import CTkLabel
 from ..app import App
 
 class Text:
-    def __init__(self, text, x=None, y=None,font='Arial', id=None, color="#000000", font_size=14):
+    def __init__(self, text, x=None, y=None, font='Arial', id=None, color="#000000", font_size=14, padx=0, pady=0):
         self.text = text
         self.id = id
         self.color = color
@@ -10,6 +10,8 @@ class Text:
         self.x = x
         self.y = y
         self.font = font
+        self.padx = padx
+        self.pady = pady
         self.label = None
 
     def render(self, parent):
@@ -23,11 +25,11 @@ class Text:
             font=(self.font, self.font_size)
         )
 
-        # Use place if x/y provided, else pack
+        # Use place if x/y provided, else pack with optional padding
         if self.x is not None and self.y is not None:
             self.label.place(x=self.x, y=self.y)
         else:
-            self.label.pack()
+            self.label.pack(padx=self.padx, pady=self.pady)
 
         # Register in App instance by ID for dynamic updates
         if self.id:
@@ -59,4 +61,3 @@ class Text:
             widget.configure(font=(font_family, font_size))
         else:
             raise ValueError(f"No Text found with id '{id}'.")
-

@@ -1,17 +1,27 @@
-## 📦 Div Component
+## Div Component
 
-`Div` is a **container component** in PyHtmlKit that can hold other components like `Text` or `Button`.  
-It acts like a **web `<div>`** and supports **absolute positioning** or **pack layout**.  
+`Div` is a **top-level container component** in PyHtmlKit that behaves like a web `<div>`.  
+It is used to group and structure your UI by holding child components such as `Text` or `Button`.
+
+A `Div` is **always a top-level container** —  
+❌ You **cannot place a Div inside another Div**.  
+✔ All other components (Text, Button, Input, etc.) must be placed **inside a Div**.
+
+⚠ **Important:**  
+If you want to position a Div manually, **you must provide both `x` and `y`**.  
+Providing only one of them will cause the Div **not to be positioned**.
 
 ---
 
 ### 🔹 Features
-- Container for other components
-- Absolute positioning using `x` and `y` coordinates
-- Pack layout fallback if `x` and `y` are omitted
-- Prevents nested `Div`s to maintain simple layout
-- Customizable **width, height, background color, and padding**
-- Supports `id` for dynamic updates of child components
+
+- Works like a web `<div>` for grouping UI elements  
+- Supports **absolute positioning**, but requires giving **both `x` and `y`**  
+- If no `x`/`y` are given, PyHtmlKit will place the Div automatically  
+- Customizable background color, width, height, and padding  
+- Holds child components that automatically render inside it  
+- Optional `id` for identifying the Div or accessing internal components later  
+- Prevents nested Divs to keep layout clean and simple  
 
 ---
 
@@ -19,25 +29,24 @@ It acts like a **web `<div>`** and supports **absolute positioning** or **pack l
 
 | Parameter  | Type        | Default      | Description |
 |------------|------------|-------------|-------------|
-| `children` | `list`     | `[]`        | List of child components inside the Div (Text, Button, etc.) |
-| `parent`   | Component  | `None`      | Optional parent component (auto-attaches to window if None) |
-| `bg_color` | `str`      | `#FFFFFF`   | Background color of the Div |
-| `padding`  | `int`      | `0`         | Padding around child components if using pack layout |
-| `id`       | `str`      | `None`      | Optional unique identifier for dynamic updates |
-| `width`    | `int`      | `100`       | Width of the Div in pixels |
-| `height`   | `int`      | `100`       | Height of the Div in pixels |
-| `x`        | `int`      | `None`      | X coordinate for absolute placement |
-| `y`        | `int`      | `None`      | Y coordinate for absolute placement |
+| `children` | `list`     | `[]`        | Components inside this Div (Text, Button, etc.) |
+| `parent`   | Component  | `None`      | Parent container (auto-attaches to window) |
+| `bg_color` | `str`      | `#FFFFFF`   | Background color |
+| `padding`  | `int`      | `0`         | Space around child components |
+| `id`       | `str`      | `None`      | Optional unique identifier |
+| `width`    | `int`      | `100`       | Width in pixels |
+| `height`   | `int`      | `100`       | Height in pixels |
+| `x`        | `int`      | `None`      | Left position on screen |
+| `y`        | `int`      | `None`      | Top position on screen |
 
 ---
 
-### 🔹 Example
+### 🔹 Example 1 — Basic Div With Text
 
 ```python
 from pyhtmlkit import Div
 from pyhtmlkit.components import Text
 
-# Create a top-level Div
 Div(
     x=50,
     y=50,
@@ -50,3 +59,58 @@ Div(
     ],
     id="mainDiv"
 )
+```
+
+---
+
+### 🔹 Example 2 — Multiple Components Inside a Div
+
+```python
+from pyhtmlkit import Div
+from pyhtmlkit.components import Text, Button
+
+def say_hi():
+    Text.set_text(id="status", new_text="Button clicked!")
+
+Div(
+    x=20,
+    y=20,
+    width=300,
+    height=200,
+    bg_color="#fafafa",
+    padding=10,
+    children=[
+        Text(text="Click the button:", font_size=16),
+        Button(text="Say Hi", on_click=say_hi),
+        Text(text="", id="status", font_size=14, color="#444")
+    ],
+    id="interactiveDiv"
+)
+```
+
+---
+
+### 🔹 Example 3 — Full Window With Div Layout
+
+```python
+from pyhtmlkit import Body, Div
+from pyhtmlkit.components import Text
+
+app = Body(title="Div Example", width=500, height=400)
+
+Div(
+    x=100,
+    y=100,
+    width=300,
+    height=200,
+    bg_color="#dcdcdc",
+    padding=20,
+    children=[
+        Text(text="Welcome to PyHtmlKit!", font_size=20, color="#222")
+    ]
+)
+
+app.run()
+```
+
+---
