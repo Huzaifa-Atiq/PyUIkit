@@ -12,6 +12,7 @@ class Div:
         width=100,
         height=100,
         x=None,
+        corner_radius = 0,
         y=None,
         nested=False           # new parameter to indicate nested Div
     ):
@@ -24,6 +25,7 @@ class Div:
         self.height = height
         self.x = x
         self.y = y
+        self.corner_radius = corner_radius
         self.nested = nested
         self.frame = None
 
@@ -45,7 +47,8 @@ class Div:
             self.parent,
             fg_color=self.bg_color,
             width=self.width,
-            height=self.height
+            height=self.height,
+            corner_radius=self.corner_radius
         )
 
         # Prevent resizing due to children
