@@ -1,27 +1,27 @@
 ## Div Component
 
-`Div` is a **top-level container component** in PyHtmlKit that behaves like a web `<div>`.  
-It is used to group and structure your UI by holding child components such as `Text` or `Button`.
+A `Div` in PyHtmlKit is like a **box or container** that can hold other UI components such as `Text`, `Button`, or `Input`.  
+Think of it like a section on a webpage where you can put things together to organize your interface neatly.
 
-A `Div` is **always a top-level container** —  
-❌ You **cannot place a Div inside another Div**.  
-✔ All other components (Text, Button, Input, etc.) must be placed **inside a Div**.
+### 🔹 Nested Divs
+Sometimes you may want a **Div inside another Div** — for example, a small card inside a bigger container.  
+This is called a **nested Div**. To create one, just use the parameter `nested=True` when making the inner Div.  
 
-⚠ **Important:**  
-If you want to position a Div manually, **you must provide both `x` and `y`**.  
-Providing only one of them will cause the Div **not to be positioned**.
+- The inner Div will appear **inside the outer Div**.  
+- You can put any components inside the nested Div just like a normal Div.  
+- You can also have multiple levels of Divs inside each other if needed.  
+
+⚠ Tip: Use **padding** to control spacing inside Divs **only if `x` and `y` are not provided**.  
+If you use `x` and `y`, the Div will use absolute positioning instead and padding will not affect
 
 ---
 
 ### 🔹 Features
 
-- Works like a web `<div>` for grouping UI elements  
-- Supports **absolute positioning**, but requires giving **both `x` and `y`**  
-- If no `x`/`y` are given, PyHtmlKit will place the Div automatically  
+- Groups UI components together  
+- Can hold other Divs as **nested Divs**  
 - Customizable background color, width, height, and padding  
-- Holds child components that automatically render inside it  
-- Optional `id` for identifying the Div or accessing internal components later  
-- Prevents nested Divs to keep layout clean and simple  
+- Optional `id` for referencing the Div in your code  
 
 ---
 
@@ -29,8 +29,8 @@ Providing only one of them will cause the Div **not to be positioned**.
 
 | Parameter  | Type        | Default      | Description |
 |------------|------------|-------------|-------------|
-| `children` | `list`     | `[]`        | Components inside this Div (Text, Button, etc.) |
-| `parent`   | Component  | `None`      | Parent container (auto-attaches to window) |
+| `children` | `list`     | `[]`        | Components inside this Div (Text, Button, Input, or Div with nested=True) |
+| `parent`   | `Component`  | `None`      | Parent container (auto-attaches to window if top-level) |
 | `bg_color` | `str`      | `#FFFFFF`   | Background color |
 | `padding`  | `int`      | `0`         | Space around child components |
 | `id`       | `str`      | `None`      | Optional unique identifier |
@@ -38,15 +38,17 @@ Providing only one of them will cause the Div **not to be positioned**.
 | `height`   | `int`      | `100`       | Height in pixels |
 | `x`        | `int`      | `None`      | Left position on screen |
 | `y`        | `int`      | `None`      | Top position on screen |
+| `nested`   | `bool`     | `False`     | Whether this Div is nested inside another Div |
 
 ---
 
-### 🔹 Example 1 — Basic Div With Text
+### 🔹 Example — Basic Div
 
 ```python
-from pyhtmlkit import Div
-from pyhtmlkit.components import Text
+from pyhtmlkit import Body, Div
+from pyhtmlkit.components import Text, Button
 
+# Example 1 — Basic Div With Text
 Div(
     x=50,
     y=50,
@@ -61,14 +63,8 @@ Div(
 )
 ```
 
----
-
-### 🔹 Example 2 — Multiple Components Inside a Div
-
+# Example 2 — Multiple Components Inside a Div
 ```python
-from pyhtmlkit import Div
-from pyhtmlkit.components import Text, Button
-
 def say_hi():
     Text.set_text(id="status", new_text="Button clicked!")
 
@@ -88,29 +84,63 @@ Div(
 )
 ```
 
----
-
-### 🔹 Example 3 — Full Window With Div Layout
-
+# Example 3 — Nested Divs
 ```python
-from pyhtmlkit import Body, Div
-from pyhtmlkit.components import Text
-
-app = Body(title="Div Example", width=500, height=400)
+app = Body(title="Nested Div Example", width=500, height=400)
 
 Div(
-    x=100,
-    y=100,
-    width=300,
-    height=200,
+    x=50,
+    y=50,
+    width=400,
+    height=300,
     bg_color="#dcdcdc",
     padding=20,
     children=[
-        Text(text="Welcome to PyHtmlKit!", font_size=20, color="#222")
-    ]
+        Text(text="Parent Div", font_size=18, color="#222"),
+        Div(
+            width=200,
+            height=100,
+            bg_color="#bbbbbb",
+            padding=10,
+            nested=True,
+            children=[
+                Text(text="Nested Div Content", font_size=16, color="#111"),
+                Button(text="Click Me")
+            ],
+            id="nestedDiv"
+        )
+    ],
+    id="parentDiv"
+)
+```
+
+# Example 4 — Full Window Layout With Divs
+```python
+Div(
+    width=150,
+    height=500,
+    bg_color="#111827",
+    padding=10,
+    children=[
+        Text(text="Sidebar", color="#f9fafb", font_size=16),
+        Button(text="Option 1"),
+        Button(text="Option 2")
+    ],
+    id="sidebar"
+)
+
+Div(
+    width=430,
+    height=500,
+    bg_color="#1f2937",
+    padding=15,
+    nested=True,
+    children=[
+        Text(text="Main Content", color="#f9fafb", font_size=18),
+        Button(text="Action")
+    ],
+    id="contentDiv"
 )
 
 app.run()
 ```
-
----

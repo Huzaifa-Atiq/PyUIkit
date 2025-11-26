@@ -27,6 +27,7 @@ It behaves similarly to an HTML `<button>` and supports **absolute positioning**
 | `height`         | `int`      | `40`          | Button height |
 | `corner_radius`  | `int`      | `8`           | Rounded corner radius |
 | `color`          | `str`      | `#3b82f6`     | Background color |
+| `hover_color`    | `str`      | `#2563eb`     | Background color when hovered |
 | `text_color`     | `str`      | `#ffffff`     | Text color |
 | `on_click`       | `function` | `None`        | Function to run on click |
 

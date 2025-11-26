@@ -93,3 +93,4 @@ For detailed usage of individual components, check the docs:
 - [Button Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Button.md)
 - [Text Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Text.md)
 - [Input Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/Input.md)
+- [FileDialog Component](https://github.com/Huzaifa-Atiq/pyhtmlkit/blob/main/docs/FileDialog.md)

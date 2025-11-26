@@ -12,9 +12,10 @@ class Div:
         width=100,
         height=100,
         x=None,
-        y=None
+        y=None,
+        nested=False           # new parameter to indicate nested Div
     ):
-        self.children = children or []  # default empty list
+        self.children = children or []
         self.parent = parent
         self.bg_color = bg_color
         self.padding = padding
@@ -23,22 +24,19 @@ class Div:
         self.height = height
         self.x = x
         self.y = y
-
-        # Prevent nested Divs
-        for child in self.children:
-            if isinstance(child, Div):
-                raise ValueError("Cannot include a Div inside another Div. Use other components instead.")
-
+        self.nested = nested
         self.frame = None
 
-        # Auto-render if top-level Div
-        if self.parent is None and App.instance is not None:
+        # Auto-render only if not nested and top-level
+        if not self.nested and App.instance is not None and self.parent is None:
             self.render(parent=App.instance.main_frame)
 
     def render(self, parent=None):
+        # Update parent if provided
         if parent is not None:
             self.parent = parent
 
+        # Default to App main frame if still None
         if self.parent is None:
             self.parent = App.instance.main_frame
 
@@ -50,7 +48,7 @@ class Div:
             height=self.height
         )
 
-        # Prevent the frame from resizing due to children
+        # Prevent resizing due to children
         self.frame.pack_propagate(False)
 
         # Use place if x/y provided, else pack
@@ -59,6 +57,7 @@ class Div:
         else:
             self.frame.pack(padx=self.padding, pady=self.padding)
 
+        # Register ID if provided
         if self.id:
             App.instance.ids[self.id] = self.frame
 

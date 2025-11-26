@@ -1,0 +1,90 @@
+from customtkinter import CTkEntry, CTkButton, CTkFrame
+from tkinter import filedialog, Tk
+from ..app import App
+
+class FileDialog:
+    def __init__(
+        self,
+        id=None,
+        width=200,
+        height=30,
+        placeholder="Select a file",
+        dialog_type="open",
+        filetypes=(("All Files", "*.*"),),
+        frame_bg="#ffffff",
+        entry_bg="#ffffff",
+        entry_text_color="#000000",
+        button_color="#3b82f6",
+        button_text_color="#ffffff",
+        padx=0,
+        pady=0
+    ):
+        self.id = id
+        self.width = width
+        self.height = height
+        self.placeholder = placeholder
+        self.dialog_type = dialog_type
+        self.filetypes = filetypes
+        self.frame_bg = frame_bg
+        self.entry_bg = entry_bg
+        self.entry_text_color = entry_text_color
+        self.button_color = button_color
+        self.button_text_color = button_text_color
+        self.padx = padx
+        self.pady = pady
+        self.path = ""
+        self.entry = None
+        self.button = None
+        self.frame = None
+
+    def render(self, parent):
+        if parent is None:
+            raise ValueError("FileDialog must be a child of a Div.")
+
+        # Frame background
+        self.frame = CTkFrame(parent, width=self.width, height=self.height, fg_color=self.frame_bg)
+        self.frame.pack_propagate(False)
+        self.frame.pack(padx=self.padx, pady=self.pady)
+
+        # Entry with text color
+        self.entry = CTkEntry(
+            self.frame,
+            width=self.width - 60,
+            placeholder_text=self.placeholder,
+            fg_color=self.entry_bg,
+            text_color=self.entry_text_color
+        )
+        self.entry.pack(side="left", fill="x", expand=True)
+
+        # Browse button
+        self.button = CTkButton(
+            self.frame,
+            text="Browse",
+            width=60,
+            fg_color=self.button_color,
+            text_color=self.button_text_color,
+            command=self.open_dialog
+        )
+        self.button.pack(side="right")
+
+        if self.id:
+            App.instance.ids[self.id] = self
+
+    def open_dialog(self):
+        root = Tk()
+        root.withdraw()  # hide main window
+        if self.dialog_type == "open":
+            self.path = filedialog.askopenfilename(filetypes=self.filetypes)
+        elif self.dialog_type == "save":
+            self.path = filedialog.asksaveasfilename(filetypes=self.filetypes)
+        root.destroy()
+        self.entry.delete(0, "end")
+        self.entry.insert(0, self.path)
+
+    # ---------- Static Methods ----------
+    @staticmethod
+    def get_file(id):
+        widget = App.instance.ids.get(id)
+        if widget is None:
+            raise ValueError(f"No FileDialog found with id '{id}'.")
+        return widget.path

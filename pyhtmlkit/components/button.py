@@ -13,6 +13,7 @@ class Button:
         corner_radius=8,
         color="#3b82f6",
         text_color="#ffffff",
+        hover_color='#3b82f6',  
         on_click=None,
         padx=0,
         pady=0
@@ -26,6 +27,7 @@ class Button:
         self.corner_radius = corner_radius
         self.color = color
         self.text_color = text_color
+        self.hover_color = hover_color 
         self.on_click = on_click
         self.padx = padx
         self.pady = pady
@@ -42,6 +44,7 @@ class Button:
             height=self.height,
             corner_radius=self.corner_radius,
             fg_color=self.color,
+            hover_color=self.hover_color,  # set hover color
             text_color=self.text_color,
             command=self.on_click
         )
@@ -57,7 +60,6 @@ class Button:
             App.instance.ids[self.id] = self.button
 
     # ------- Dynamic Update Methods ---------
-
     @staticmethod
     def set_text(id, text):
         widget = App.instance.ids.get(id)
