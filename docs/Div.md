@@ -10,9 +10,7 @@ This is called a **nested Div**. To create one, just use the parameter `nested=T
 - The inner Div will appear **inside the outer Div**.  
 - You can put any components inside the nested Div just like a normal Div.  
 - You can also have multiple levels of Divs inside each other if needed.  
-
-⚠ Tip: Use **padding** to control spacing inside Divs **only if `x` and `y` are not provided**.  
-If you use `x` and `y`, the Div will use absolute positioning instead and padding will not affect
+- x and y coordinates should be specified for a specific position
 
 ---
 

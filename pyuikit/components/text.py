@@ -1,8 +1,9 @@
 from customtkinter import CTkLabel
 from ..app import App
+import warnings
 
 class Text:
-    def __init__(self, text, x=None, y=None, font='Arial', id=None, color="#000000", font_size=14, padx=0, pady=0):
+    def __init__(self, text, x=None, y=None, font='Arial', id=None, color="#000000", font_size=14):
         self.text = text
         self.id = id
         self.color = color
@@ -10,8 +11,6 @@ class Text:
         self.x = x
         self.y = y
         self.font = font
-        self.padx = padx
-        self.pady = pady
         self.label = None
 
     def render(self, parent):
@@ -25,13 +24,17 @@ class Text:
             font=(self.font, self.font_size)
         )
 
-        # Use place if x/y provided, else pack with optional padding
+        # Absolute positioning only
         if self.x is not None and self.y is not None:
             self.label.place(x=self.x, y=self.y)
         else:
-            self.label.pack(padx=self.padx, pady=self.pady)
+            self.label.place(x=0, y=0)
+            warnings.warn(
+                f"[PyUIkit] Warning: Text '{self.text}' missing x or y coordinates. Auto-placing at (0, 0).",
+                stacklevel=2
+            )
 
-        # Register in App instance by ID for dynamic updates
+        # Register in App instance by ID
         if self.id:
             App.instance.ids[self.id] = self.label
 

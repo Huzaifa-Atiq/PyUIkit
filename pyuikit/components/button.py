@@ -1,5 +1,6 @@
 from customtkinter import CTkButton
 from ..app import App
+import warnings
 
 class Button:
     def __init__(
@@ -15,8 +16,6 @@ class Button:
         text_color="#ffffff",
         hover_color='#3b82f6',  
         on_click=None,
-        padx=0,
-        pady=0
     ):
         self.text = text
         self.id = id
@@ -29,8 +28,6 @@ class Button:
         self.text_color = text_color
         self.hover_color = hover_color 
         self.on_click = on_click
-        self.padx = padx
-        self.pady = pady
         self.button = None
 
     def render(self, parent):
@@ -53,7 +50,12 @@ class Button:
         if self.x is not None and self.y is not None:
             self.button.place(x=self.x, y=self.y)
         else:
-            self.button.pack(padx=self.padx, pady=self.pady)
+            self.button.place(x=0, y=0)
+            warnings.warn(
+                f"[PyUIkit] Warning: Button '{self.text}' missing x or y coordinates. "
+                f"Auto-placing at (0, 0).",
+                stacklevel=2
+            )
 
         # Register ID for updates
         if self.id:

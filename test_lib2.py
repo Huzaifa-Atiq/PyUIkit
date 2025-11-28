@@ -1,145 +1,41 @@
-from pyhtmlkit import Body, Div
-from pyhtmlkit.components import Text, Button, FileDialog, Input
+from pyuikit import Body, Div
+from pyuikit.components import RadioButton, Text, Button
 
-# ---------- Callback Functions ----------
-def encrypt_file():
-    file_path = FileDialog.get_file("encryptFile")
-    key = Input.get_text("encryptKey")
+# Create the main window
+app = Body(title="RadioButton Test", width=600, height=400)
 
-    if not file_path or not key:
-        Text.set_text("encryptStatus", "❌ Select file & enter key first!")
-    else:
-        Text.set_text("encryptStatus", f"✅ File encrypted:\n{file_path}")
+# Callback function to show selected option
+def show_selected():
+    selected = RadioButton.get_value(id="radio1")
+    Text.set_text(id="resultText", new_text=f"Selected: {selected}")
 
-def decrypt_file():
-    file_path = FileDialog.get_file("decryptFile")
-    key = Input.get_text("decryptKey")
+# Callback functions for radio buttons
+def radio1_changed(new_val):
+    print(f"Radio1 changed to: {new_val}")
 
-    if not file_path or not key:
-        Text.set_text("decryptStatus", "❌ Select file & enter key first!")
-    else:
-        Text.set_text("decryptStatus", f"🔓 File decrypted:\n{file_path}")
-
-
-# ---------- Main App Window ----------
-app = Body(
-    title="Encryptor",
-    width=850,
-    height=500,
-    bg_color="#0f0f0f"
-)
-
-# ----------- Title -----------
-Text(
-    text="🔐 File Encryptor",
-    font_size=28,
-    color="#22c55e",
-    pady=20
-)
-
-# ----------- Wrapper Row (Left & Right Panels) -----------
+# Top-level Div
 Div(
-    width=800,
-    height=350,
-    bg_color=None,
-    children=[]
-)
-
-# ------------ ENCRYPT PANEL ------------
-Div(
-    width=380,
-    height=330,
-    padding=20,
-    bg_color="#1a1a1a",
-    corner_radius=12,
+    x=50,
+    y=50,
+    width=500,
+    height=300,
+    bg_color="#f0f0f0",
+    id="mainDiv",
     children=[
-        Text("Encrypt File", font_size=20, color="#22c55e", pady=10),
-
-        FileDialog(
-            id="encryptFile",
-            width=320,
-            height=40,
-            placeholder="Choose file to encrypt",
-            frame_bg="#111111",
-            entry_bg="#0f0f0f",
-            entry_text_color="#e5e5e5",
-            button_color="#22c55e",
-            button_text_color="black",
-            pady=10
+        Text(text="Choose your favorite fruit:", x=20, y=20, font_size=16),
+        RadioButton(
+            options=["Apple", "Banana", "Cherry"],
+            x=20,
+            y=60,
+            id="radio1",
+            default="Banana",
+            on_change=radio1_changed,
+            text_color='black'
         ),
-
-        Input(
-            id="encryptKey",
-            width=320,
-            height=40,
-            placeholder="Enter encryption key",
-            bg_color="#0f0f0f",
-            text_color="#e5e5e5",
-            pady=10
-        ),
-
-        Button(
-            text="Encrypt",
-            width=150,
-            height=40,
-            color="#22c55e",
-            hover_color="#16a34a",
-            text_color="black",
-            on_click=encrypt_file,
-            pady=15
-        ),
-
-        Text(id="encryptStatus", text="", color="#9ef6c5", font_size=14)
+        Button(text="Show Selected", x=20, y=145, on_click=show_selected),
+        Text(text="Waiting for selection...", x=20, y=200, id="resultText", font_size=14, color="#007acc")
     ]
+    
 )
-
-# ------------ DECRYPT PANEL ------------
-Div(
-    width=380,
-    height=330,
-    padding=20,
-    bg_color="#1a1a1a",
-    corner_radius=12,
-    children=[
-        Text("Decrypt File", font_size=20, color="#22c55e", pady=10),
-
-        FileDialog(
-            id="decryptFile",
-            width=320,
-            height=40,
-            placeholder="Choose file to decrypt",
-            frame_bg="#111111",
-            entry_bg="#0f0f0f",
-            entry_text_color="#e5e5e5",
-            button_color="#22c55e",
-            button_text_color="black",
-            pady=10
-        ),
-
-        Input(
-            id="decryptKey",
-            width=320,
-            height=40,
-            placeholder="Enter decryption key",
-            bg_color="#0f0f0f",
-            text_color="#e5e5e5",
-            pady=10
-        ),
-
-        Button(
-            text="Decrypt",
-            width=150,
-            height=40,
-            color="#22c55e",
-            hover_color="#16a34a",
-            text_color="black",
-            on_click=decrypt_file,
-            pady=15
-        ),
-
-        Text(id="decryptStatus", text="", color="#9ef6c5", font_size=14)
-    ]
-)
-
 
 app.run()

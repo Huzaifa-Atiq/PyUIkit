@@ -1,9 +1,10 @@
 from customtkinter import CTkEntry, CTkTextbox
 from ..app import App
+import warnings
 
 class Input:
     def __init__(self, id=None, x=None, y=None, width=200, height=30, placeholder="", multiline=False,
-                 padx=0, pady=0, bg_color="#ffffff", text_color="#000000"):
+                 bg_color="#ffffff", text_color="#000000"):
         self.id = id
         self.x = x
         self.y = y
@@ -11,8 +12,6 @@ class Input:
         self.height = height
         self.placeholder = placeholder
         self.multiline = multiline
-        self.padx = padx
-        self.pady = pady
         self.bg_color = bg_color
         self.text_color = text_color
         self.widget = None
@@ -21,6 +20,7 @@ class Input:
         if parent is None:
             raise ValueError("Input must be a child of a Div.")
 
+        # Create the widget
         if self.multiline:
             self.widget = CTkTextbox(
                 parent,
@@ -39,13 +39,22 @@ class Input:
                 placeholder_text_color=self.text_color,
             )
 
+        # Absolute positioning only
         if self.x is not None and self.y is not None:
             self.widget.place(x=self.x, y=self.y)
         else:
-            self.widget.pack(padx=self.padx, pady=self.pady)
+            self.widget.place(x=0, y=0)
+            warnings.warn(
+                f"[PyUIkit] Warning: Input '{self.id or self.placeholder}' missing x or y coordinates. "
+                f"Auto-placing at (0, 0).",
+                stacklevel=2
+            )
 
+        # Register ID for dynamic access
         if self.id:
             App.instance.ids[self.id] = self.widget
+
+    # --------- Static Methods --------- #
 
     @staticmethod
     def get_input(id):

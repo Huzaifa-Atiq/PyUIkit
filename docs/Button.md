@@ -46,9 +46,9 @@ It behaves similarly to an HTML `<button>` and supports **absolute positioning**
 
 ---
 
-## 🧪 Examples
+## Examples
 
-### ✅ Example 1 — Simple Button inside a Div
+### Example 1 — Simple Button inside a Div
 ```python
 from pyuikit import Div
 from pyuikit.components import Button
@@ -69,7 +69,7 @@ Div(
 )
 ```
 
-### ✅ Example 2 — Button with Click Event
+### Example 2 — Button with Click Event
 ```python
 from pyuikit import Div
 from pyuikit.components import Button
@@ -94,7 +94,7 @@ Div(
 )
 ```
 
-### ✅ Example 3 — Dynamic Updates Using id
+### Example 3 — Dynamic Updates Using id
 ```python
 from pyuikit import Div
 from pyuikit.components import Button
@@ -122,7 +122,7 @@ Div(
 )
 ```
 
-## 🔍 Notes
+## Notes
 
 - Button must be placed inside a Div
 

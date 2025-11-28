@@ -1,11 +1,14 @@
 from customtkinter import CTkEntry, CTkButton, CTkFrame
 from tkinter import filedialog, Tk
 from ..app import App
+import warnings
 
 class FileDialog:
     def __init__(
         self,
         id=None,
+        x=None,
+        y=None,
         width=200,
         height=30,
         placeholder="Select a file",
@@ -15,11 +18,11 @@ class FileDialog:
         entry_bg="#ffffff",
         entry_text_color="#000000",
         button_color="#3b82f6",
-        button_text_color="#ffffff",
-        padx=0,
-        pady=0
+        button_text_color="#ffffff"
     ):
         self.id = id
+        self.x = x
+        self.y = y
         self.width = width
         self.height = height
         self.placeholder = placeholder
@@ -30,8 +33,6 @@ class FileDialog:
         self.entry_text_color = entry_text_color
         self.button_color = button_color
         self.button_text_color = button_text_color
-        self.padx = padx
-        self.pady = pady
         self.path = ""
         self.entry = None
         self.button = None
@@ -41,12 +42,23 @@ class FileDialog:
         if parent is None:
             raise ValueError("FileDialog must be a child of a Div.")
 
-        # Frame background
-        self.frame = CTkFrame(parent, width=self.width, height=self.height, fg_color=self.frame_bg)
+        self.frame = CTkFrame(
+            parent,
+            width=self.width,
+            height=self.height,
+            fg_color=self.frame_bg
+        )
         self.frame.pack_propagate(False)
-        self.frame.pack(padx=self.padx, pady=self.pady)
 
-        # Entry with text color
+        if self.x is not None and self.y is not None:
+            self.frame.place(x=self.x, y=self.y)
+        else:
+            self.frame.place(x=0, y=0)
+            warnings.warn(
+                f"[PyUIkit] Warning: FileDialog missing x or y coordinates. Auto-placing at (0, 0).",
+                stacklevel=2
+            )
+
         self.entry = CTkEntry(
             self.frame,
             width=self.width - 60,
@@ -56,7 +68,6 @@ class FileDialog:
         )
         self.entry.pack(side="left", fill="x", expand=True)
 
-        # Browse button
         self.button = CTkButton(
             self.frame,
             text="Browse",

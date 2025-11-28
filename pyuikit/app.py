@@ -9,7 +9,7 @@ class App:
         height=400,
         resizable=(True, True),
         bg_color="#FFFFFF",  # default to white
-        icon=None,
+        icon='logo.ico',
     ):
         App.instance = self  # <<< set the singleton immediately
         self.root = CTk()
