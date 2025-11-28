@@ -10,13 +10,13 @@
 * FileDialog – open/save file dialog, customizable colors, dynamic path retrieval
 * Checkbox – boolean toggle, customizable colors, dynamic state access
 * Dropdown / Select – list selection, dynamic value get/set
+* RadioButton – grouped selection, customizable style, dynamic value access
 
 ---
 
 ### 🟡 To-Do Components
 
 * Image – display images (improve resizing behavior, support dynamic updates)
-* RadioButton – grouped selection, customizable style, dynamic value access
 * Slider / Range Input – numeric input with min/max, dynamic value updates
 * ProgressBar – visual feedback for processes, dynamic updates
 * Scrollable Div – div that allows scrolling when content overflows
