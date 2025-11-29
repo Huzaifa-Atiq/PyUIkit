@@ -92,7 +92,7 @@ class FileDialog:
         self.entry.delete(0, "end")
         self.entry.insert(0, self.path)
 
-    # ---------- Static Methods ----------
+    # Dynamic Update Methods 
     @staticmethod
     def get_file(id):
         widget = App.instance.ids.get(id)

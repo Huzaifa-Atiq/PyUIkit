@@ -1,41 +1,49 @@
 from pyuikit import Body, Div
-from pyuikit.components import RadioButton, Text, Button
+from pyuikit.components import Text, Input, Button, Dropdown
 
-# Create the main window
-app = Body(title="RadioButton Test", width=600, height=400)
+# ---------- Callback Function ----------
+def convert_unit():
+    try:
+        value = float(Input.get_input("inputValue"))
+        from_unit = Dropdown.get_value("fromUnit")
+        to_unit = Dropdown.get_value("toUnit")
+        
+        # Conversion factors relative to meters
+        factors = {
+            "Meters": 1,
+            "Kilometers": 1000,
+            "Miles": 1609.34,
+            "Feet": 0.3048
+        }
+        
+        result = value * factors[from_unit] / factors[to_unit]
+        Text.set_text("resultText", f"{value} {from_unit} = {result:.4f} {to_unit}")
+    except ValueError:
+        Text.set_text("resultText", "❌ Enter a valid number!")
 
-# Callback function to show selected option
-def show_selected():
-    selected = RadioButton.get_value(id="radio1")
-    Text.set_text(id="resultText", new_text=f"Selected: {selected}")
+# ---------- Create App ----------
+app = Body(title="Unit Converter", width=500, height=300, bg_color="#1f2937")
 
-# Callback functions for radio buttons
-def radio1_changed(new_val):
-    print(f"Radio1 changed to: {new_val}")
-
-# Top-level Div
+# ---------- Main Div ----------
 Div(
     x=50,
     y=50,
-    width=500,
-    height=300,
-    bg_color="#f0f0f0",
-    id="mainDiv",
+    width=400,
+    height=200,
+    bg_color="#111827",
+    padding=15,
     children=[
-        Text(text="Choose your favorite fruit:", x=20, y=20, font_size=16),
-        RadioButton(
-            options=["Apple", "Banana", "Cherry"],
-            x=20,
-            y=60,
-            id="radio1",
-            default="Banana",
-            on_change=radio1_changed,
-            text_color='black'
-        ),
-        Button(text="Show Selected", x=20, y=145, on_click=show_selected),
-        Text(text="Waiting for selection...", x=20, y=200, id="resultText", font_size=14, color="#007acc")
+        Text(text="Unit Converter", x=20, y=0, font_size=20, color="#f9fafb"),
+        
+        Input(id="inputValue", x=20, y=40, width=180, placeholder="Enter value", bg_color="#1f2937", text_color="#ffffff"),
+        
+        Dropdown(options=["Meters", "Kilometers", "Miles", "Feet"], id="fromUnit", x=220, y=40),
+        Dropdown(options=["Meters", "Kilometers", "Miles", "Feet"], id="toUnit", x=220, y=80),
+        
+        Button(text="Convert", x=20, y=80, width=180, height=35, color="#3b82f6", text_color="#ffffff", on_click=convert_unit),
+        
+        Text(text="", x=20, y=130, font_size=16, color="#f9fafb", id="resultText")
     ]
-    
 )
 
 app.run()

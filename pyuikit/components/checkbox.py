@@ -54,7 +54,7 @@ class Checkbox:
         if self.id:
             App.instance.ids[self.id] = self
 
-    # Simple methods to get/set state
+    # Dynamic Update Methods 
     @staticmethod
     def is_checked(id):
         widget = App.instance.ids.get(id)

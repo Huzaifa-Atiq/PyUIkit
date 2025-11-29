@@ -4,7 +4,7 @@ class App:
     instance = None  # Class variable for singleton
     def __init__(
         self,
-        title="PyHtmlKit App",
+        title="PyUIkit App",
         width=600,
         height=400,
         resizable=(True, True),

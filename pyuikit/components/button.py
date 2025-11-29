@@ -41,7 +41,7 @@ class Button:
             height=self.height,
             corner_radius=self.corner_radius,
             fg_color=self.color,
-            hover_color=self.hover_color,  # set hover color
+            hover_color=self.hover_color,  
             text_color=self.text_color,
             command=self.on_click
         )
@@ -61,7 +61,7 @@ class Button:
         if self.id:
             App.instance.ids[self.id] = self.button
 
-    # ------- Dynamic Update Methods ---------
+    # Dynamic Update Methods 
     @staticmethod
     def set_text(id, text):
         widget = App.instance.ids.get(id)

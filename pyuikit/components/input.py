@@ -54,7 +54,7 @@ class Input:
         if self.id:
             App.instance.ids[self.id] = self.widget
 
-    # --------- Static Methods --------- #
+    # Dynamic Update Methods 
 
     @staticmethod
     def get_input(id):
@@ -67,6 +67,7 @@ class Input:
         else:  # CTkTextbox
             return widget.get("1.0", "end-1c")
 
+     
     @staticmethod
     def set_input(id, value):
         widget = App.instance.ids.get(id)

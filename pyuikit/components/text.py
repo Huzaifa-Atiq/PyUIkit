@@ -38,7 +38,7 @@ class Text:
         if self.id:
             App.instance.ids[self.id] = self.label
 
-    # Dynamic update methods via ID
+    # Dynamic Update Methods 
     @staticmethod
     def set_text(id, new_text):
         widget = App.instance.ids.get(id)
