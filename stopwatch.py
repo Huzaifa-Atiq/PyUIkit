@@ -15,14 +15,14 @@ Div(
     height=500,
     width=400,
     children=[
-        Text(text='Your BMI calculator',font_size=30,x=10,y=20),
+        Text(text='Your BMI calculator',font_size=30),
 
-        Input(placeholder='Enter your height(meters)',id='height',x=10,y=60),
-        Input(placeholder='Enter your weight(kg)',id='weight',x=10,y=100),
+        Input(placeholder='Enter your height(meters)',id='height'),
+        Input(placeholder='Enter your weight(kg)',id='weight'),
 
-        Button(text='Submit',color='green',x=10,y=140,on_click=calc),
+        Button(text='Submit',color='green',on_click=calc),
 
-        Text(text='',x=10,y=220,font_size=25,id='output')
+        Text(text='22',font_size=25,id='output')
     ]
 )
 

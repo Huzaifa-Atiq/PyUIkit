@@ -1,49 +1,27 @@
 from pyuikit import Body, Div
-from pyuikit.components import Text, Input, Button, Dropdown
+from pyuikit.components import Text, Input, Button
 
-# ---------- Callback Function ----------
-def convert_unit():
-    try:
-        value = float(Input.get_input("inputValue"))
-        from_unit = Dropdown.get_value("fromUnit")
-        to_unit = Dropdown.get_value("toUnit")
-        
-        # Conversion factors relative to meters
-        factors = {
-            "Meters": 1,
-            "Kilometers": 1000,
-            "Miles": 1609.34,
-            "Feet": 0.3048
-        }
-        
-        result = value * factors[from_unit] / factors[to_unit]
-        Text.set_text("resultText", f"{value} {from_unit} = {result:.4f} {to_unit}")
-    except ValueError:
-        Text.set_text("resultText", "❌ Enter a valid number!")
+def calc():
+    height = float(Input.get_input(id='height'))
+    weight = float(Input.get_input(id='weight'))
+    bmi = weight / (height ** 2)
+    Text.set_text(id='output', new_text=f'Your BMI is {bmi:.2f}')
 
-# ---------- Create App ----------
-app = Body(title="Unit Converter", width=500, height=300, bg_color="#1f2937")
+app = Body(width=400, height=500, bg_color='white')
 
-# ---------- Main Div ----------
 Div(
-    x=50,
-    y=50,
-    width=400,
-    height=200,
-    bg_color="#111827",
-    padding=15,
+    width=360,
+    height=450,
+    bg_color='#f0f0f0',
+    padding=20,
     children=[
-        Text(text="Unit Converter", x=20, y=0, font_size=20, color="#f9fafb"),
-        
-        Input(id="inputValue", x=20, y=40, width=180, placeholder="Enter value", bg_color="#1f2937", text_color="#ffffff"),
-        
-        Dropdown(options=["Meters", "Kilometers", "Miles", "Feet"], id="fromUnit", x=220, y=40),
-        Dropdown(options=["Meters", "Kilometers", "Miles", "Feet"], id="toUnit", x=220, y=80),
-        
-        Button(text="Convert", x=20, y=80, width=180, height=35, color="#3b82f6", text_color="#ffffff", on_click=convert_unit),
-        
-        Text(text="", x=20, y=130, font_size=16, color="#f9fafb", id="resultText")
-    ]
+        Text(text='BMI Calculator', font_size=30),
+        Input(placeholder='Enter height (m)', id='height'),
+        Input(placeholder='Enter weight (kg)', id='weight'),
+        Button(text='Calculate', color='green', on_click=calc),
+        Text(text='', font_size=25, id='output')
+    ],
+    id='mainDiv'
 )
 
 app.run()
