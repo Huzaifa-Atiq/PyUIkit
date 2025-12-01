@@ -1,0 +1,17 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="pyuikit",
+    version="0.0.1a",
+    packages=find_packages(),
+    include_package_data=True,
+    install_requires=[
+        "customtkinter",
+    ],
+    author="Muhammad Huzaifa Atiq",
+    description="A modern UI library for Python aiming simplicity..",
+    long_description=open("README.md", "r", encoding="utf-8").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/yourusername/pyuikit",
+    license="MIT",
+)
