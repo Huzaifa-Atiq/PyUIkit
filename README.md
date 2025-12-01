@@ -32,7 +32,7 @@ app.run()
 
 This creates a blank window with the specified size and background color.
 
-![window](/documentation/images/gettingstarted2.png)
+![window](/documentation/images/gettingstarted1.png)
 
 2. Add components inside a Div
 
