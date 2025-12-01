@@ -51,7 +51,7 @@ app.run()
 
 This creates a blank window with the specified size and background color.
 
-![window](/documentation/images/gettingstarted1.png)
+![window](https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/main/documentation/images/gettingstarted1.png)
 
 2. Add components inside a Div
 
@@ -81,7 +81,7 @@ app.run()
 
 Note: Every app must have at least one top-level Div to hold components.
 
-![window](/documentation/images/gettingstarted2.png)
+![window](https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/main/documentation/images/gettingstarted2.png)
 
 ## Documentation:
 
