@@ -1,3 +1,22 @@
+Metadata-Version: 2.4
+Name: pyuikit
+Version: 0.0.3a0
+Summary: A modern UI library for Python aiming simplicity..
+Home-page: https://github.com/Huzaifa-atiq/pyuikit
+Author: Muhammad Huzaifa Atiq
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: customtkinter
+Dynamic: author
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
+
 # PyUIkit
 
 **PyUIkit** is a modern, web-like, component-based **Python GUI framework** built on top of [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter). It aims to bring **simplicity and web-like component structure** to Python GUI development, allowing developers to create windows, divs, and components without dealing with complex layout management. It allows you to create **beautiful and interactive desktop applications** with minimal code, using **Div-based layouts** and reusable UI components.
@@ -32,7 +51,7 @@ app.run()
 
 This creates a blank window with the specified size and background color.
 
-![window](https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/main/documentation/images/gettingstarted1.png)
+![window](/documentation/images/gettingstarted1.png)
 
 2. Add components inside a Div
 
@@ -62,7 +81,7 @@ app.run()
 
 Note: Every app must have at least one top-level Div to hold components.
 
-![window](https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/main/documentation/images/gettingstarted2.png)
+![window](/documentation/images/gettingstarted2.png)
 
 ## Documentation:
 

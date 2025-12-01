@@ -1,4 +1,6 @@
 from customtkinter import CTk, CTkFrame
+from importlib.resources import files
+import os
 
 class App:
     instance = None  # Class variable for singleton
@@ -9,7 +11,7 @@ class App:
         height=400,
         resizable=(True, True),
         bg_color="#FFFFFF",  # default to white
-        icon='logo.ico',
+        icon=None,
     ):
         App.instance = self  # <<< set the singleton immediately
         self.root = CTk()
@@ -23,11 +25,15 @@ class App:
         self.main_frame.pack(fill="both", expand=True)
 
         # Optional styling
-        if icon:
-            try:
+        try:
+            if icon:  # user provided their own icon
                 self.root.iconbitmap(icon)
-            except:
-                print(f"Could not set icon from {icon}")
+            else:  # use library default
+                icon_path = files("pyuikit").joinpath("logo.ico")
+                self.root.iconbitmap(str(icon_path))
+        except Exception as e:
+            print(f"Could not set icon: {e}")
+
 
         # Store widgets by ID
         self.ids = {}
