@@ -3,7 +3,14 @@
 A `Div` in PyUIkit is like a **box or container** that can hold other UI components such as `Text`, `Button`, or `Input`.  
 Think of it like a section on a webpage where you can put things together to organize your interface neatly.
 
-### 🔹 Nested Divs
+**Divs DO NOT auto stack therefore you are required to give x and y coordinates to the divs for the desired position**
+
+components inside a div auto stack vertically. They can still be manually positioned by their own x and y coordinates if needed 
+
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
+
+### Nested Divs
 Sometimes you may want a **Div inside another Div** — for example, a small card inside a bigger container.  
 This is called a **nested Div**. To create one, just use the parameter `nested=True` when making the inner Div.  
 
@@ -14,7 +21,7 @@ This is called a **nested Div**. To create one, just use the parameter `nested=T
 
 ---
 
-### 🔹 Features
+### Features
 
 - Groups UI components together  
 - Can hold other Divs as **nested Divs**  
@@ -23,7 +30,7 @@ This is called a **nested Div**. To create one, just use the parameter `nested=T
 
 ---
 
-### 🔹 Parameters
+### Parameters
 
 | Parameter  | Type        | Default      | Description |
 |------------|------------|-------------|-------------|
@@ -40,7 +47,7 @@ This is called a **nested Div**. To create one, just use the parameter `nested=T
 
 ---
 
-### 🔹 Example — Basic Div
+### Example — Basic Div
 
 ```python
 from pyuikit import Body, Div
@@ -83,9 +90,8 @@ Div(
 ```
 
 # Example 3 — Nested Divs
-```python
-app = Body(title="Nested Div Example", width=500, height=400)
 
+```python
 Div(
     x=50,
     y=50,
@@ -93,6 +99,7 @@ Div(
     height=300,
     bg_color="#dcdcdc",
     padding=20,
+    id="parentDiv",
     children=[
         Text(text="Parent Div", font_size=18, color="#222"),
         Div(
@@ -107,8 +114,7 @@ Div(
             ],
             id="nestedDiv"
         )
-    ],
-    id="parentDiv"
+    ]
 )
 ```
 
@@ -139,6 +145,5 @@ Div(
     ],
     id="contentDiv"
 )
-
-app.run()
 ```
+![window](images/div1.png)

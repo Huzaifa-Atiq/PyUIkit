@@ -3,9 +3,11 @@
 `Dropdown` is a **select menu component** in PyUIkit that lets users choose an option from a list.  
 It supports **custom colors, dynamic value updates, option updates, and on-change callbacks**.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
 ---
 
-## 🔹 Features
+## Features
 - Choose from a list of options.
 - Fully customizable colors (text, background, hover).
 - Supports dynamic **get/set value** and **changing options** via `id`.
@@ -14,7 +16,7 @@ It supports **custom colors, dynamic value updates, option updates, and on-chang
 
 ---
 
-## 🔹 Parameters
+### Parameters
 
 | Parameter        | Type        | Default       | Description |
 |-----------------|-------------|---------------|-------------|
@@ -32,7 +34,7 @@ It supports **custom colors, dynamic value updates, option updates, and on-chang
 
 ---
 
-## 🔹 Static Methods
+## Static Methods
 
 ### `Dropdown.get_value(id)`
 Returns the current selected value of the dropdown.
@@ -45,7 +47,7 @@ Replaces the dropdown's option list with new values.
 
 ---
 
-# ✅ Basic Usage 
+## Basic Usage 
 
 ```python
 from pyuikit import Body, Div
@@ -70,7 +72,7 @@ app.run()
 ```
 ---
 
-# 🚀 Advanced Usage (Simple & Clean)
+## Advanced Usage (Simple & Clean)
 
 This example shows how to:
 
@@ -127,7 +129,7 @@ Div(
 app.run()
 ```
 
-## 🔹 Complete Usage
+## Complete Usage
 
 ```python
 from pyuikit import Body, Div

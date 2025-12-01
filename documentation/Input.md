@@ -5,15 +5,17 @@ It supports **single-line and multi-line modes**, custom colors, placeholder tex
 
 An `Input` component **must always be placed inside a Div**.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
+
 ---
 
-### 🔹 Features
+### Features
 
 - Single-line **or** multi-line input (`multiline=True`)  
 - Custom background and text color  
 - Custom placeholder text  
 - Supports **absolute positioning** using `x` AND `y`  
-  ❗ *Providing only one of them will not work*  
 - Auto-positions when `x` and `y` are not provided  
 - Padding support (`padx`, `pady`)  
 - Fully dynamic API using the component’s `id`:
@@ -23,7 +25,7 @@ An `Input` component **must always be placed inside a Div**.
 
 ---
 
-### 🔹 Parameters
+### Parameters
 
 | Parameter      | Type    | Default     | Description |
 |----------------|---------|-------------|-------------|
@@ -41,7 +43,7 @@ An `Input` component **must always be placed inside a Div**.
 
 ---
 
-## 🔹 Example 1 — Basic Input (Auto Placement)
+## Example 1 — Basic Input (Auto Placement)
 
 ```python
 from pyuikit.components import Input
@@ -56,7 +58,7 @@ Div(
 )
 ```
 
-## 🔹 Example 2 — Input With Absolute Position
+## Example 2 — Input With Absolute Position
 
 ```python
 from pyuikit.components import Input
@@ -78,7 +80,9 @@ Div(
 )
 ```
 
-## 🔹 Example 3 — Multi-line Input (Textarea Style)
+## Example 3 — Multi-line Input 
+
+multiline inputs do not support placeholders
 
 ```python
 from pyuikit.components import Input
@@ -92,13 +96,12 @@ Div(
             id="bioBox",
             multiline=True,
             height=120,
-            placeholder="Write your bio..."
         )
     ]
 )
 ```
 
-## 🔹 Example 4 — Getting & Setting Input Text Dynamically
+## Example 4 — Getting & Setting Input Text Dynamically
 
 ```python
 from pyuikit.components import Input

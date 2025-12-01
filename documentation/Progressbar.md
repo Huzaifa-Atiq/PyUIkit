@@ -3,6 +3,8 @@
 `ProgressBar` in **PyUIkit** is a **visual indicator** to show progress for tasks like loading, uploading, or processing.  
 It supports **dynamic updates**, custom colors, and works seamlessly with other UI components.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
 ---
 
 ### 🔹 Features
@@ -15,7 +17,7 @@ It supports **dynamic updates**, custom colors, and works seamlessly with other 
 
 ---
 
-### 🔹 Parameters
+### Parameters
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
@@ -30,20 +32,8 @@ It supports **dynamic updates**, custom colors, and works seamlessly with other 
 
 ---
 
-### 🔹 Static Methods
 
-#### `ProgressBar.get_value(id)`  
-Get the current progress value (0–100) of a ProgressBar by its `id`.
-
-#### `ProgressBar.set_value(id, new_value)`  
-Set the progress dynamically. `new_value` should be in 0–100 range.
-
-#### `ProgressBar.set_colors(id, fg_color=None, bg_color=None)`  
-Update foreground and/or background colors dynamically. Use `fg_color` for the progress color and `bg_color` for the bar background.
-
----
-
-### 🔹 Basic Usage
+### Basic Usage
 
 ```python
 from pyuikit import Body, Div
@@ -64,7 +54,7 @@ Div(
 app.run()
 ```
 
-### 🔹 Advanced Usage – Dynamic Update
+### Advanced Usage – Dynamic Update
 
 ```python
 from pyuikit import Body, Div
@@ -100,7 +90,20 @@ Div(
 app.run()
 ```
 
-### 🔹 Tips & Best Practices
+### Static Methods
+
+#### `ProgressBar.get_value(id)`  
+Get the current progress value (0–100) of a ProgressBar by its `id`.
+
+#### `ProgressBar.set_value(id, new_value)`  
+Set the progress dynamically. `new_value` should be in 0–100 range.
+
+#### `ProgressBar.set_colors(id, fg_color=None, bg_color=None)`  
+Update foreground and/or background colors dynamically. Use `fg_color` for the progress color and `bg_color` for the bar background.
+
+---
+
+### Tips & Best Practices
 
 - Always assign an id to a ProgressBar if you plan to update it dynamically.
 

@@ -3,19 +3,20 @@
 `Button` is an interactive component in PyUIkit used to trigger actions when clicked.  
 It behaves similarly to an HTML `<button>` and supports **absolute positioning**, custom colors, dynamic updates, and click events.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
 ---
 
-### 🔹 Features
+### Features
 - Customizable text, size, colors, and corner radius  
 - Supports **absolute positioning** with `x` and `y`  
 - Works as a child of a `Div` (cannot be placed directly on the window)  
 - Supports unique `id` for dynamic updates  
 - Clickable with `on_click` callback functions  
-- Lightweight, built on top of **CustomTkinter CTkButton**
 
 ---
 
-### 🔹 Parameters
+### Parameters
 
 | Parameter        | Type       | Default       | Description |
 |------------------|------------|---------------|-------------|
@@ -33,7 +34,7 @@ It behaves similarly to an HTML `<button>` and supports **absolute positioning**
 
 ---
 
-### 🔹 Dynamic Update Methods
+### Dynamic Update Methods
 
 | Method | Description |
 |--------|-------------|
@@ -128,5 +129,5 @@ Div(
 
 - If x and y are not provided, the button stacks vertically inside the Div
 
-- Each button can be updated at runtime using its
+- Each button can be updated at runtime using its id.
 

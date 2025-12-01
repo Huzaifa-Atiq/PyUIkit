@@ -3,9 +3,11 @@
 `FileDialog` is a **file picker component** in PyUIkit that allows users to **select or save files**.  
 You can style it, set a placeholder, and retrieve the selected file path easily.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
 ---
 
-### 🔹 Features
+### Features
 
 - Open or save files with a native file dialog.
 - Fully customizable **frame, entry, and button colors**.
@@ -14,7 +16,7 @@ You can style it, set a placeholder, and retrieve the selected file path easily.
 
 ---
 
-### 🔹 Parameters
+### Parameters
 
 | Parameter           | Type        | Default           | Description |
 |--------------------|------------|-----------------|-------------|
@@ -23,7 +25,7 @@ You can style it, set a placeholder, and retrieve the selected file path easily.
 | `height`           | `int`      | `30`            | Height of the FileDialog component |
 | `placeholder`      | `str`      | `"Select a file"` | Placeholder text inside the entry |
 | `dialog_type`      | `str`      | `"open"`        | `"open"` to select a file, `"save"` to save a file |
-| `filetypes`        | tuple      | `(("All Files", "*.*"),)` | Tuple specifying file types |
+| `filetypes`        | `tuple`      | `(("All Files", "*.*"),)` | Tuple specifying file types |
 | `frame_bg`         | `str`      | `"#ffffff"`     | Background color of the frame |
 | `entry_bg`         | `str`      | `"#ffffff"`     | Background color of the entry |
 | `entry_text_color` | `str`      | `"#000000"`     | Text color inside the entry |
@@ -37,7 +39,7 @@ You can style it, set a placeholder, and retrieve the selected file path easily.
 #### `get_file(id)` (Static)
 Retrieve the currently selected file path by the FileDialog's `id`.
 
-### 🔹 Example Usage
+### Example Usage
 ```python
 from pyuikit import Body, Div
 from pyuikit.components import FileDialog, Button, Text

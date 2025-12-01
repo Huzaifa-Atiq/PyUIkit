@@ -5,9 +5,12 @@ It’s perfect for settings, preferences, and forms where only one choice is all
 
 Unlike checkboxes, **you cannot select more than one**.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
+
 ---
 
-## 🔹 How It Works
+## How It Works
 
 - You provide a list of `options=["Apple", "Banana", "Cherry"]`
 - Only **one** option can be selected at a time  
@@ -17,7 +20,7 @@ Unlike checkboxes, **you cannot select more than one**.
 
 ---
 
-## 🔹 Parameters
+## Parameters
 
 | Parameter      | Type      | Default | Description |
 |----------------|----------|---------|-------------|
@@ -32,7 +35,7 @@ Unlike checkboxes, **you cannot select more than one**.
 
 ---
 
-## 🔹 Static Methods
+## Static Methods
 
 | Method | Description |
 |--------|------------|

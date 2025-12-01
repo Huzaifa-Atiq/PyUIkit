@@ -1,96 +1,84 @@
 # PyUIkit
 
-PyUIkit is a Python library for building desktop applications with a **simple, HTML-like syntax**.  
-It aims to bring **simplicity and web-like component structure** to Python GUI development, allowing developers to create windows, divs, and components without dealing with complex layout management.  
-The interface is built on **CustomTkinter**, making it lightweight, modern, and easy to use.
+**PyUIkit** is a modern, web-like, component-based **Python GUI framework** built on top of [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter). It aims to bring **simplicity and web-like component structure** to Python GUI development, allowing developers to create windows, divs, and components without dealing with complex layout management. It allows you to create **beautiful and interactive desktop applications** with minimal code, using **Div-based layouts** and reusable UI components.
 
 ---
 
-## ⚡ Features
-
-### Simple Layouts
-- Create windows with a single line of code
-- Use **Divs** as containers for components
-- Absolute positioning with `x` and `y` or pack layout for flexibility
-- Automatic handling of component IDs for dynamic updates
-
-### Components
-- **Text**: Display text with color, font size, and dynamic updates
-- **Button**: Clickable buttons with customizable size, color, text, corner radius, and click functions
-- Easily extendable for future components (Images, Inputs, etc.)
-
-### Dynamic Updates
-- Update text, colors, and fonts at runtime using component IDs
-- Simple, consistent API for changing UI elements without rebuilding
+## Features
+- Create **nested layouts** with `Div` containers.
+- Use **Text, Input, Button** components and more.
+- Interactive components with **event handling**.
+- Component IDs for **dynamic updates**.
+- Easy to use for both **beginners and experienced developers**.
+- Supports **modern styling** and **dark/light themes** (future updates).
 
 ---
 
-## 🚀 Quickstart
-
-### 1. Install
+## Installation
 ```bash
 pip install pyuikit
 ```
 
-### 2. Create your first window
+## Getting started
+
+1. Create a simple window
+
 ```python
 from pyuikit import Body
 
-app = Body(title="My First App", width=600, height=400, bg_color="#f5f5f5")
+app = Body(width=400, height=300, bg_color='white')
 app.run()
 ```
 
-### 3. Add a Div container
+This creates a blank window with the specified size and background color.
+
+![window](images/gettingstarted1.png)
+
+2. Add components inside a Div
+
 ```python
-from pyuikit import Div
+from pyuikit import Body, Div
+from pyuikit.components import Text, Button, Input
+
+def greet():
+    name = Input.get_input(id='name_input')
+    Text.set_text(id='greeting', new_text=f'Hello, {name}!')
+
+app = Body(width=400, height=300, bg_color='white')
 
 Div(
-    x=50,
-    y=50,
-    width=400,
-    height=300,
-    bg_color="#eaeaea",
-    padding=10,
-    id="mainDiv"
-)
-
-```
-
-### 4. Add Text inside a Div
-```python
-from pyuikit.components import Text
-
-Div(
-    x=50,
-    y=50,
-    width=400,
-    height=300,
-    bg_color="#eaeaea",
-    padding=10,
+    width=360,
+    height=250,
     children=[
-        Text(text="Hello PyUIkit!", color="#333", font_size=20, id="mainText")
-    ],
-    id="mainDiv"
+        Text(text='Enter your name:'),
+        Input(placeholder='Name',id='name_input'),
+        Button(text='Greet',on_click=greet),
+        Text(text='', id='greeting')
+    ]
 )
+
+app.run()
 ```
 
-### 5. Update Text dynamically
-```python
-from pyuikit.components import Text
+Note: Every app must have at least one top-level Div to hold components.
 
-# Change text after some action
-Text.set_text("mainText", "Updated Text!")
-Text.set_color("mainText", "#ff0000")
-Text.set_font_size("mainText", 30)
+![window](images/gettingstarted2.png)
 
-```
+## Documentation:
 
-## 📚 Components Documentation
+Full documentation and examples: 
 
-For detailed usage of individual components, check the docs:
+- [Quickstart guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md)
+- [Div component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Div.md)
+- [Body component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Body.md)
 
-- [Div Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Div.md)
-- [Button Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Button.md)
-- [Text Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Text.md)
-- [Input Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/Input.md)
-- [FileDialog Component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/docs/FileDialog.md)
+Other components:
+
+- [Button component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Button.md)
+- [Text component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Text.md)
+- [Input component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Input.md)
+- [Filedialog component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Filedialog.md)
+- [Slider component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Slider.md)
+- [Radiobutton component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Radiobutton.md)
+- [Progressbar component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Progressbar.md)
+- [Dropdown component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Dropdown.md)

@@ -6,13 +6,14 @@ It supports **custom fonts, colors, sizes, and optional positioning**.
 A `Text` component **must always be placed inside a Div**.  
 It cannot exist on its own.
 
+> ⚠️ **Note:** Before using this component, it is recommended to read the [Quickstart Guide](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Quickstart.md) if you haven't already to understand how to create windows, top-level Divs, and basic setup.
+
 ---
 
 ### 🔹 Features
 
 - Display static or dynamically-updatable text  
 - Supports **absolute positioning** using `x` **and** `y`  
-  ❗ **Giving only `x` or only `y` will not work — both must be provided**  
 - If no `x` and `y` are given, the Text auto-positions itself  
 - Customizable font family, size, and color  
 - Can be dynamically updated *using its `id`*  
@@ -38,7 +39,6 @@ It cannot exist on its own.
 
 ```python
 from pyuikit.components import Text
-from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -53,7 +53,6 @@ Div(
 
 ```python
 from pyuikit.components import Text
-from pyuikit import Div
 
 Div(
     x=20, y=20,
@@ -68,7 +67,6 @@ Div(
 ### 🔹 Example 3 — Using id for Dynamic Updates
 ```python
 from pyuikit.components import Text
-from pyuikit import Div
 
 Div(
     x=20, y=20,
