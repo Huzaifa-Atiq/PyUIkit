@@ -31,8 +31,6 @@ You can style it, set a placeholder, and retrieve the selected file path easily.
 | `entry_text_color` | `str`      | `"#000000"`     | Text color inside the entry |
 | `button_color`     | `str`      | `"#3b82f6"`     | Browse button background color |
 | `button_text_color`| `str`      | `"#ffffff"`     | Browse button text color |
-| `padx`             | `int`      | `0`             | Horizontal padding around the component |
-| `pady`             | `int`      | `0`             | Vertical padding around the component |
 
 ---
 
