@@ -1,7 +1,7 @@
 <div style="display: flex; align-items: center;">
-  <img src="https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/refs/heads/main/pyuikit.svg" width="100" />
-  <span style="font-size: 36px; font-weight: bold; margin-left: 10px;">PyUIkit</span>
+  <img src="https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/refs/heads/main/pyuikit.svg" width="500" />
 </div>
+<br>
 
 
 
