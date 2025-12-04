@@ -147,3 +147,61 @@ Div(
 )
 ```
 ![window](images/div1.png)
+
+# Example 5 — Horizontal Stacking
+
+```python
+Div(
+    x=20,
+    y=20,
+    width=400,
+    height=150,
+    bg_color="#222",
+    padding=15,
+    horizontal=True,
+    children=[
+        Button(text="One"),
+        Button(text="Two"),
+        Button(text="Three")
+    ]
+)
+```
+
+# Div Methods
+
+The `Div` class includes `dynamic` update helpers:
+
+1. set_bg_color(id, color)
+
+```python
+Div.set_bg_color(id="mainDiv", color="#ff0000")
+```
+
+1. set_size(id, width, height)
+
+```python
+Div.set_size(id="mainDiv", width=300, height=150)
+```
+
+# Example 5 — Using Update Methods in an App
+
+```python
+def make_red():
+    Div.set_bg_color("colorBox", "#ef4444")
+
+def make_big():
+    Div.set_size("colorBox", width=300, height=200)
+
+Div(
+    x=30,
+    y=30,
+    width=200,
+    height=150,
+    bg_color="gray",
+    id="colorBox",
+    children=[
+        Button(text="Red", on_click=make_red),
+        Button(text="Grow", on_click=make_big),
+    ]
+)
+```

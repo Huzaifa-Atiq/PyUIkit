@@ -14,7 +14,8 @@ class Div:
         x=None,
         y=None,
         corner_radius=0,
-        nested=False           # new parameter to indicate nested Div
+        nested=False,
+        horizontal=False
     ):
         self.children = children or []
         self.parent = parent
@@ -28,6 +29,7 @@ class Div:
         self.corner_radius = corner_radius
         self.nested = nested
         self.frame = None
+        self.horizontal = horizontal
 
         # Keep track of last child position for stacking
         self._last_x = self.padding
@@ -88,6 +90,38 @@ class Div:
                 elif child_height is None:
                     child_height = 30  # fallback height
 
-                # Increase vertical spacing using padding
-                self._last_x = child.x
-                self._last_y = child.y + child_height + self.padding * 1.5  # double padding for nicer gap
+                # Get child dimensions
+                child_width = getattr(child, "width", None)
+                if child_width is None and hasattr(child, "frame"):
+                    child.frame.update_idletasks()
+                    child_width = child.frame.winfo_width()
+                elif child_width is None:
+                    child_width = 100
+
+                if self.horizontal:
+                    # Horizontal stacking: move to the right
+                    self._last_x = child.x + child_width + self.padding
+                    # Keep Y constant
+                    self._last_y = child.y
+                else:
+                    # Increase vertical spacing using padding
+                    self._last_x = child.x
+                    self._last_y = child.y + child_height + self.padding * 1.5  # double padding for nicer gap
+
+
+    @staticmethod
+    def set_bg_color(id, color):
+        widget = App.instance.ids.get(id)
+        if widget is None:
+            raise ValueError(f"No Div found with id '{id}'")
+        widget.configure(fg_color=color)
+
+    @staticmethod
+    def set_size(id, width=None, height=None):
+        widget = App.instance.ids.get(id)
+        if widget is None:
+            raise ValueError(f"No Div found with id '{id}'")
+        if width is not None:
+            widget.configure(width=width)
+        if height is not None:
+            widget.configure(height=height)

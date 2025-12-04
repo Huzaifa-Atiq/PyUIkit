@@ -1,4 +1,9 @@
-# PyUIkit
+<div style="display: flex; align-items: center;">
+  <img src="https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/refs/heads/main/pyuikit.svg" width="100" />
+  <span style="font-size: 36px; font-weight: bold; margin-left: 10px;">PyUIkit</span>
+</div>
+
+
 
 **PyUIkit** is a modern, web-like, component-based **Python GUI framework** built on top of [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter). It aims to bring **simplicity and web-like component structure** to Python GUI development, allowing developers to create windows, divs, and components without dealing with complex layout management. It allows you to create **beautiful and interactive desktop applications** with minimal code, using **Div-based layouts** and reusable UI components.
 
