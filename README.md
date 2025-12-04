@@ -1,5 +1,5 @@
 <div style="display: flex; align-items: center;">
-  <img src="https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/refs/heads/main/pyuikit.svg" width="500" />
+  <img src="https://raw.githubusercontent.com/Huzaifa-Atiq/PyUIkit/refs/heads/main/pyuikit_logo.svg" width="500" />
 </div>
 <br>
 
