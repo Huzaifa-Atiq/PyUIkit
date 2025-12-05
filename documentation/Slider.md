@@ -115,6 +115,7 @@ Div(
     y=20,
     width=360,
     height=200,
+    bg_color='black',
     children=[
         Slider(
             id="mySlider",
