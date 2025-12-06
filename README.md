@@ -90,5 +90,5 @@ Other components:
 
 Example Applications:
 
-- [Password strength checker](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/colormixer.md)
-- [Text component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/passwordchecker.md)
+- [Password strength checker](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/passwordchecker.md)
+- [Color mixer](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/colormixer.md)
