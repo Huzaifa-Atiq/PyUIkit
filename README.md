@@ -87,3 +87,8 @@ Other components:
 - [Radiobutton component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Radiobutton.md)
 - [Progressbar component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Progressbar.md)
 - [Dropdown component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Dropdown.md)
+
+Example Applications:
+
+- [Password strength checker](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/colormixer.md)
+- [Text component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/passwordchecker.md)
