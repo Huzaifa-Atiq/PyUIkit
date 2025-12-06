@@ -92,3 +92,7 @@ Example Applications:
 
 - [Password strength checker](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/passwordchecker.md)
 - [Color mixer](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/examples/colormixer.md)
+
+<br><br>
+**Note:** PyUIkit is now in a stable release, but issues may still occur. We welcome and appreciate contributions! Feel free to submit PRs or report any problems via the [GitHub Issues](https://github.com/Huzaifa-Atiq/PyUIkit/issues) tab.
+
