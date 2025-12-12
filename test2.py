@@ -1,69 +1,46 @@
 from pyuikit import Body, Div
-from pyuikit.components import Button
-from pyuikit.components.toast import Toast
+from pyuikit.components import Button, Toast
 
-app = Body(title="Toast Demo", width=600, height=400)
+app = Body(title="Multiple Toasts", width=600, height=400)
 
-
-# ---------------------------
-# 1. Simple top-right toast
-# ---------------------------
-def toast_top_right():
+def toast_success():
     Toast(
-        text="Top Right Toast!",
-        fg_color="#444",
+        text="✅ Success!",
+        bg_color="#10b981",
         text_color="white",
-        duration=3,
         position="top-right",
-        show_close=True
-    ).render(app.root)
+        duration=3
+    ).show()
 
-
-# ---------------------------
-# 2. Bottom-left warning toast
-# ---------------------------
-def toast_bottom_left():
+def toast_warning():
     Toast(
-        text="Bottom Left Warning",
-        fg_color="#cc8800",
-        text_color="black",
-        duration=5,
+        text="⚠️ Warning!",
+        bg_color="#facc15",
+        text_color="#000000",
         position="bottom-left",
-        show_close=False,       # no close button
-        width=260,
-        height=55,
-        font_name="Arial",
-        font_size=15,
-    ).render(app.root)
+        duration=4
+    ).show()
 
-
-# ---------------------------
-# 3. Custom position toast with manual x,y
-# ---------------------------
 def toast_custom_xy():
     Toast(
-        text="Custom Positioned Toast",
-        fg_color="#0066aa",
+        text="Custom Position!",
+        bg_color="#0066aa",
         text_color="white",
         duration=4,
         x=150,
-        y=120,                 # custom exact position
-        show_close=True,
+        y=120,
         width=240,
         height=50,
-    ).render(app.root)
+        show_close=True
+    ).show()
 
-
-# ----------------------------
-# Layout UI
-# ----------------------------
 Div(
-    width=600,
+    width=500,
     height=400,
     children=[
-        Button(text="Show Top-Right Toast", on_click=toast_top_right),
-        Button(text="Show Bottom-Left Toast", on_click=toast_bottom_left),
-        Button(text="Show Custom XY Toast", on_click=toast_custom_xy),
+        Button(text="Success Toast", on_click=toast_success),
+        Button(text="Warning Toast", on_click=toast_warning),
+        Button(text="Custom Position Toast", on_click=toast_custom_xy),
     ]
 )
 

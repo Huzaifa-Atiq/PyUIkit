@@ -13,7 +13,7 @@ class Toast:
         position="top-right",
         width=220,
         height=50,
-        fg_color="#333333",
+        bg_color="#333333",
         text_color="#ffffff",
         font_name="Arial",
         font_size=14,
@@ -27,7 +27,7 @@ class Toast:
         self.position = position
         self.width = width
         self.height = height
-        self.fg_color = fg_color
+        self.fg_color = bg_color
         self.text_color = text_color
         self.font_name = font_name
         self.font_size = font_size
@@ -69,9 +69,9 @@ class Toast:
             self.destroy()
 
     # RENDER TOAST
-    def render(self, parent):
+    def render(self, parent=None):
         if parent is None:
-            raise ValueError("Toast must be inside a Div or Body.")
+            parent = App.instance.root
 
         # ---------------- Create Frame ----------------
         self.frame = CTkFrame(
@@ -140,9 +140,13 @@ class Toast:
         # Auto hide
         threading.Timer(self.duration, self.slide_out).start()
 
-    # ---------------------------------------------------------
-    #                DESTROY
-    # ---------------------------------------------------------
+
+    # SHOW
+    def show(self):
+        self.render()
+
+
+    # DESTROY
     def destroy(self):
         if self.frame:
             self.frame.destroy()
