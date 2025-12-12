@@ -8,3 +8,5 @@ from .components.progressbar import ProgressBar
 from .components.radiobutton import RadioButton
 from .components.slider import Slider
 from .components.text import Text
+from .components.switch import Switch
+from .components.toast import Toast
