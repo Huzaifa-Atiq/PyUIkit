@@ -200,7 +200,7 @@ Div.set_bg_color(id="mainDiv", color="#ff0000")
 Div.set_size(id="mainDiv", width=300, height=150)
 ```
 
-# Example 5 — Using Update Methods in an App
+# Example 6 — Using Update Methods in an App
 
 ```python
 def make_red():
