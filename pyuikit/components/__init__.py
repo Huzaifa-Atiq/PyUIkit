@@ -7,3 +7,4 @@ from .dropdown import Dropdown
 from .radiobutton import RadioButton
 from .slider import Slider
 from .progressbar import ProgressBar
+from .switch import Switch
