@@ -44,6 +44,23 @@ This is called a **nested Div**. To create one, just use the parameter `nested=T
 | `x`        | `int`      | `None`      | Left position on screen |
 | `y`        | `int`      | `None`      | Top position on screen |
 | `nested`   | `bool`     | `False`     | Whether this Div is nested inside another Div |
+| `Horizontal`   | `bool`     | `False`     | Whether this Div should stack its components vertically or horizontally |
+
+---
+
+Sure! Here's a cleaner and more concise version of your note with a polished explanation:
+
+---
+
+## Note ⚠️:
+
+* Components inside a `Div` **auto-stack** if no `x` or `y` positions are provided.
+* The stacking **direction** is controlled by the `horizontal` parameter:
+
+  * `horizontal=True` → components are stacked **horizontally**
+  * `horizontal=False` (default) → components are stacked **vertically**
+
+This allows you to create flexible, web-like layouts without manually specifying coordinates for every component.
 
 ---
 

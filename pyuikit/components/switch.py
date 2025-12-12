@@ -14,7 +14,7 @@ class Switch:
         text="",
         default=False,
         on_change=None,
-        fg_color="#2b2b2b",
+        bg_color="#2b2b2b",
         progress_color="#3b82f6",
         button_color="#ffffff",
         button_hover_color=None,
@@ -30,7 +30,7 @@ class Switch:
         self.text = text
         self.default = default
         self.on_change = on_change
-        self.fg_color = fg_color
+        self.bg_color = bg_color
         self.progress_color = progress_color
         self.button_color = button_color
         self.button_hover_color = button_hover_color
@@ -56,7 +56,7 @@ class Switch:
             height=self.height,
             text=self.text,
             command=callback,
-            fg_color=self.fg_color,
+            bg_color=self.bg_color,
             progress_color=self.progress_color,
             button_color=self.button_color,
             button_hover_color=self.button_hover_color,

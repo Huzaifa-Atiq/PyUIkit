@@ -30,7 +30,7 @@ You can also dynamically read or set its state using its `id`.
 | `text`               | `str`      | `""`      | Label displayed next to the switch                                  |
 | `default`            | `bool`     | `False`   | Initial switch state (`True` = ON, `False` = OFF)                   |
 | `on_change`          | `function` | `None`    | Callback function when toggled; receives current state (`0` or `1`) |
-| `fg_color`           | `str`      | `#2b2b2b` | Background color of the switch                                      |
+| `bg_color`           | `str`      | `#2b2b2b` | Background color of the switch                                      |
 | `progress_color`     | `str`      | `#3b82f6` | Color when the switch is ON                                         |
 | `button_color`       | `str`      | `#ffffff` | Color of the switch button/knob                                     |
 | `button_hover_color` | `str`      | `None`    | Hover color for the switch button                                   |
@@ -122,7 +122,7 @@ Div(
             id="customSwitch",
             text="Custom Switch",
             default=True,
-            fg_color="#333333",
+            bg_color="#333333",
             progress_color="#4caf50",
             button_color="#ffffff",
             button_hover_color="#888888",
