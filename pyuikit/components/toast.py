@@ -42,38 +42,85 @@ class Toast:
         self.final_x = None
         self.final_y = None
 
-    # SLIDE IN ANIMATION
+    # ---------------- Position calculation ----------------
+    def calculate_positions(self, parent):
+        parent.update_idletasks()
+        w = parent.winfo_width()
+        h = parent.winfo_height()
+
+        if self.x is not None and self.y is not None:
+            self.final_x = self.x
+            self.final_y = self.y
+        else:
+            if self.position == "top-right":
+                self.final_x = w - self.width - 20
+                self.final_y = 20
+            elif self.position == "top-left":
+                self.final_x = 20
+                self.final_y = 20
+            elif self.position == "bottom-right":
+                self.final_x = w - self.width - 20
+                self.final_y = h - self.height - 20
+            elif self.position == "bottom-left":
+                self.final_x = 20
+                self.final_y = h - self.height - 20
+
+        # Start off-screen depending on side
+        if self.position in ["top-right", "bottom-right"]:
+            self.start_x = self.final_x + 300
+        elif self.position in ["top-left", "bottom-left"]:
+            self.start_x = self.final_x - 300
+
+        self.frame.place(x=self.start_x, y=self.final_y)
+
+    # ---------------- Slide-in animation ----------------
     def slide_in(self):
         if not self.frame:
             return
 
         current_x = self.frame.winfo_x()
+        step = 14
 
-        if current_x > self.final_x:
-            self.frame.place(x=current_x - 14, y=self.final_y)
-            self.frame.after(10, self.slide_in)
-        else:
-            self.frame.place(x=self.final_x, y=self.final_y)
+        if self.position in ["top-right", "bottom-right"]:
+            if current_x > self.final_x:
+                self.frame.place(x=current_x - step, y=self.final_y)
+                self.frame.after(10, self.slide_in)
+            else:
+                self.frame.place(x=self.final_x, y=self.final_y)
+        else:  # left positions
+            if current_x < self.final_x:
+                self.frame.place(x=current_x + step, y=self.final_y)
+                self.frame.after(10, self.slide_in)
+            else:
+                self.frame.place(x=self.final_x, y=self.final_y)
 
-    # SLIDE OUT ANIMATION
+    # ---------------- Slide-out animation ----------------
     def slide_out(self):
         if not self.frame:
             return
 
         current_x = self.frame.winfo_x()
+        step = 14
 
-        if current_x < self.final_x + 300:
-            self.frame.place(x=current_x + 14, y=self.final_y)
-            self.frame.after(10, self.slide_out)
-        else:
-            self.destroy()
+        if self.position in ["top-right", "bottom-right"]:
+            if current_x < self.final_x + 300:
+                self.frame.place(x=current_x + step, y=self.final_y)
+                self.frame.after(10, self.slide_out)
+            else:
+                self.destroy()
+        else:  # left positions
+            if current_x > self.final_x - 300:
+                self.frame.place(x=current_x - step, y=self.final_y)
+                self.frame.after(10, self.slide_out)
+            else:
+                self.destroy()
 
-    # RENDER TOAST
+    # ---------------- Render ----------------
     def render(self, parent=None):
         if parent is None:
             parent = App.instance.root
 
-        # ---------------- Create Frame ----------------
+        # Create Frame
         self.frame = CTkFrame(
             master=parent,
             width=self.width,
@@ -105,33 +152,10 @@ class Toast:
             )
             close_btn.pack(side="right", padx=10)
 
-        parent.update_idletasks()
-        w = parent.winfo_width()
-        h = parent.winfo_height()
+        # Calculate positions and place offscreen
+        self.calculate_positions(parent)
 
-        # ---------------- Positioning ----------------
-        if self.x is not None and self.y is not None:
-            self.final_x = self.x
-            self.final_y = self.y
-        else:
-            if self.position == "top-right":
-                self.final_x = w - self.width - 20
-                self.final_y = 20
-            elif self.position == "top-left":
-                self.final_x = 20
-                self.final_y = 20
-            elif self.position == "bottom-right":
-                self.final_x = w - self.width - 20
-                self.final_y = h - self.height - 20
-            elif self.position == "bottom-left":
-                self.final_x = 20
-                self.final_y = h - self.height - 20
-
-        # Start off-screen (right side)
-        self.start_x = self.final_x + 300
-        self.frame.place(x=self.start_x, y=self.final_y)
-
-        # Animate slide-in after a short delay
+        # Start slide-in animation
         parent.after(10, self.slide_in)
 
         if self.id:
@@ -140,13 +164,11 @@ class Toast:
         # Auto hide
         threading.Timer(self.duration, self.slide_out).start()
 
-
-    # SHOW
+    # ---------------- Show ----------------
     def show(self):
         self.render()
 
-
-    # DESTROY
+    # ---------------- Destroy ----------------
     def destroy(self):
         if self.frame:
             self.frame.destroy()
