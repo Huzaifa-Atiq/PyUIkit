@@ -88,6 +88,7 @@ Other components:
 - [Progressbar component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Progressbar.md)
 - [Dropdown component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Dropdown.md)
 - [Switch component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Switch.md)
+- [Toast component](https://github.com/Huzaifa-Atiq/PyUIkit/blob/main/documentation/Toast.md)
 
 Example Applications:
 
