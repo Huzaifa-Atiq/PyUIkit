@@ -60,7 +60,7 @@ class Input:
     # Dynamic Update Methods 
 
     @staticmethod
-    def get_input(id):
+    def get_input_text(id):
         widget = App.instance.ids.get(id)
         if widget is None:
             raise ValueError(f"No Input found with id '{id}'.")
@@ -72,7 +72,7 @@ class Input:
 
      
     @staticmethod
-    def set_input(id, value):
+    def set_input_text(id, value):
         widget = App.instance.ids.get(id)
         if widget is None:
             raise ValueError(f"No Input found with id '{id}'.")
