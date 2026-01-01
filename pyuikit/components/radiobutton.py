@@ -12,7 +12,6 @@ class RadioButton:
         default=None,
         on_change=None,
         text_color="#ffffff",
-        font='Arial',
         font_size=14
     ):
         self.options = options
@@ -22,7 +21,6 @@ class RadioButton:
         self.default = default or (options[0] if options else "")
         self.on_change = on_change
         self.text_color = text_color
-        self.font = font
         self.font_size = font_size
 
         self.var = StringVar(value=self.default)
@@ -49,7 +47,7 @@ class RadioButton:
                 variable=self.var,
                 value=option,
                 text_color=self.text_color,
-                font=(self.font, self.font_size),
+                font=('Arial', self.font_size),
                 command=lambda val=option: self.on_change(val) if self.on_change else None
             )
             rb.place(x=self.x, y=self.y + idx * (self.font_size + 10))

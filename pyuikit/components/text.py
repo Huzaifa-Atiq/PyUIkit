@@ -3,14 +3,13 @@ from ..app import App
 import warnings
 
 class Text:
-    def __init__(self, text, x=None, y=None, font='Arial', id=None, color="#000000", font_size=14):
+    def __init__(self, text, x=None, y=None, id=None, color="#000000", font_size=14):
         self.text = text
         self.id = id
         self.color = color
         self.font_size = font_size
         self.x = x
         self.y = y
-        self.font = font
         self.label = None
 
     def render(self, parent):
@@ -21,7 +20,7 @@ class Text:
             master=parent,
             text=self.text,
             text_color=self.color,
-            font=(self.font, self.font_size)
+            font=('Arial', self.font_size)
         )
 
         # Absolute positioning only

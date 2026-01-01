@@ -35,7 +35,6 @@ You can also dynamically read or set its state using its `id`.
 | `button_color`       | `str`      | `#ffffff` | Color of the switch button/knob                                     |
 | `button_hover_color` | `str`      | `None`    | Hover color for the switch button                                   |
 | `text_color`         | `str`      | `None`    | Color of the label text                                             |
-| `font_name`          | `str`      | `"Arial"` | Font family for the label text                                      |
 | `font_size`          | `int`      | `14`      | Font size for the label text                                        |
 
 ---

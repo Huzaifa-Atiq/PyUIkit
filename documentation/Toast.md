@@ -34,7 +34,6 @@ You can **customize colors, position, size, duration, and optional close buttons
 | `height`     | int       | `50`          | Height of the toast in pixels                                            |
 | `bg_color`   | str       | `#333333`     | Background color of the toast                                            |
 | `text_color` | str       | `#ffffff`     | Color of the text                                                        |
-| `font_name`  | str       | `"Arial"`     | Font family of the text                                                  |
 | `font_size`  | int       | `14`          | Font size of the text                                                    |
 | `show_close` | bool      | `True`        | Whether to show a close button for manual dismissal                      |
 | `id`         | str       | None          | Unique identifier to access the toast programmatically                   |

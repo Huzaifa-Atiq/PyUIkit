@@ -44,7 +44,7 @@ app = Body(title="Password Strength Checker", width=500, height=350, bg_color="#
 
 # ----------------- CHECK FUNCTION -----------------
 def check_password():
-    pwd = Input.get_input(id="pwdInput")
+    pwd = Input.get_input_text(id="pwdInput")
     strength = 0
 
     if len(pwd) >= 8:

@@ -19,7 +19,6 @@ class Switch:
         button_color="#ffffff",
         button_hover_color=None,
         text_color=None,
-        font_name="Arial",
         font_size=14
     ):
         self.x = x
@@ -35,7 +34,6 @@ class Switch:
         self.button_color = button_color
         self.button_hover_color = button_hover_color
         self.text_color = text_color
-        self.font_name = font_name
         self.font_size = font_size
 
         self.switch = None
@@ -45,7 +43,7 @@ class Switch:
             raise ValueError("Switch must be a child of a Div.")
 
         # Prepare font tuple dynamically
-        font_tuple = (self.font_name, self.font_size)
+        font_tuple = ('Arial', self.font_size)
 
         # Wrap callback so it passes the current state automatically
         callback = (lambda: self.on_change(Switch.get_state(self.id))) if self.on_change else None

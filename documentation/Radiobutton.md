@@ -30,7 +30,6 @@ Unlike checkboxes, **you cannot select more than one**.
 | `default`      | str      | First option | Default selected value |
 | `on_change`    | function | None    | Called with the new value when selection changes |
 | `text_color`   | str      | `#ffffff` | Label color |
-| `font`         | str      | `'Arial'` | Font family |
 | `font_size`    | int      | `14`    | Label font size |
 
 ---

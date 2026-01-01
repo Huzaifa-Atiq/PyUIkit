@@ -12,7 +12,6 @@ class Checkbox:
         id=None,
         text_color="#ffffff",
         color="#00ff88",
-        font='Arial',
         font_size=14,
         default=False
     ):
@@ -20,7 +19,6 @@ class Checkbox:
         self.id = id
         self.text_color = text_color
         self.color = color
-        self.font = font
         self.font_size = font_size
         self.x = x
         self.y = y
@@ -37,7 +35,7 @@ class Checkbox:
             text=self.text,
             text_color=self.text_color,
             fg_color=self.color,
-            font=(self.font, self.font_size),
+            font=('Arial', self.font_size),
             variable=self._variable
         )
 
