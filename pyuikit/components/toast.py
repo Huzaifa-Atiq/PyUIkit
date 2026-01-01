@@ -15,7 +15,6 @@ class Toast:
         height=50,
         bg_color="#333333",
         text_color="#ffffff",
-        font_name="Arial",
         font_size=14,
         show_close=True,
         id=None
@@ -29,7 +28,6 @@ class Toast:
         self.height = height
         self.fg_color = bg_color
         self.text_color = text_color
-        self.font_name = font_name
         self.font_size = font_size
         self.show_close = show_close
         self.id = id
@@ -135,7 +133,7 @@ class Toast:
             master=self.frame,
             text=self.text,
             text_color=self.text_color,
-            font=(self.font_name, self.font_size)
+            font=('Arial', self.font_size)
         )
         self.label.pack(side="left", padx=15, pady=10)
 

@@ -28,7 +28,6 @@ It cannot exist on its own.
 | `text`      | `str`   | *required*  | The text to display |
 | `x`         | `int`   | `None`      | Absolute X-position (must be used with `y`) |
 | `y`         | `int`   | `None`      | Absolute Y-position (must be used with `x`) |
-| `font`      | `str`   | `"Arial"`   | Font family |
 | `font_size` | `int`   | `14`        | Text size |
 | `color`     | `str`   | `#000000`   | Text color |
 | `id`        | `str`   | `None`      | Used for dynamic updates |

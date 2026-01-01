@@ -4,7 +4,7 @@ import warnings
 
 class Input:
     def __init__(self, id=None, x=None, y=None, width=200, height=30, placeholder="", multiline=False,
-                 bg_color="#ffffff", text_color="#000000"):
+                 bg_color="#ffffff", text_color="#000000",font_size=14):
         self.id = id
         self.x = x
         self.y = y
@@ -14,6 +14,7 @@ class Input:
         self.multiline = multiline
         self.bg_color = bg_color
         self.text_color = text_color
+        self.font_size = font_size
         self.widget = None
 
     def render(self, parent):
@@ -33,6 +34,8 @@ class Input:
             self.widget = CTkEntry(
                 parent,
                 width=self.width,
+                height=self.height,
+                font=('Arial', self.font_size),
                 placeholder_text=self.placeholder,
                 fg_color=self.bg_color,
                 text_color=self.text_color,
@@ -92,3 +95,13 @@ class Input:
             widget.configure(text_color=color, placeholder_text_color=color)
         else:
             widget.configure(text_color=color)
+
+    @staticmethod
+    def set_input_bg_color(id, color):
+        """Update background color dynamically for both single-line and multiline inputs."""
+        widget = App.instance.ids.get(id)
+        if widget is None:
+            raise ValueError(f"No Input found with id '{id}'.")
+
+        # Update background color
+        widget.configure(fg_color=color)
