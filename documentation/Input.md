@@ -130,5 +130,8 @@ Input.set_input_text(id="msgBox", value="Hello World!")
 # Change input color (also updates placeholder automatically)
 Input.set_input_color(id="msgBox", color="#ff0000")
 
+# Change input color (also updates placeholder automatically)
+Input.set_input_bg_color(id="msgBox", color="#ff0000")
+
 ```
 
