@@ -1,42 +1,3 @@
-# PyUIkit Password Strength Checker Example
-
-This is a simple **Password Strength Checker app** built using PyUIkit.
-It demonstrates how to use the `Div`, `Text`, `Input`, and `Button` components to create an interactive UI.
-
----
-
-## Features
-
-* Enter a password and **check its strength**.
-* Provides feedback: *Too short*, *Weak*, *Moderate*, *Strong*, or *Very Strong*.
-* Shows feedback text in **different colors** for visual indication.
-
----
-
-## Components Used
-
-* **Div**: Container for grouping components and setting backgrounds.
-* **Text**: Displays static or dynamic text.
-* **Input**: Field for entering passwords.
-* **Button**: Triggers the password check function.
-
----
-
-## How It Works
-
-1. User types a password into the `Input` component.
-2. When the **Check** button is clicked:
-
-   * The password is fetched using `Input.get_input(id="pwdInput")`.
-   * Strength is calculated based on length, presence of digits, letters, and special characters.
-   * `Text.set_text()` updates the feedback message.
-   * `Text.set_color()` changes the color of the feedback message based on strength.
-
----
-
-## Code
-
-```python
 from pyuikit import Body, Div
 from pyuikit.components import Text, Input, Button
 
@@ -110,10 +71,3 @@ Div(
 )
 
 app.run()
-```
-
----
-
-![password checker](./images/password1.png)
-<br><br>
-![password checker](./images/password2.png)
