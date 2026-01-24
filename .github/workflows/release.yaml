@@ -71,34 +71,6 @@ jobs:
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
 
-      - name: Create Git tag
-        if: env.CREATE_TAG == 'True'
-        env:
-          VERSION: ${{ env.VERSION }}
-          GH_PAT: ${{ secrets.GH_PAT }}   # Use PAT secret
-        run: |
-          TAG="v$VERSION"
-          echo "Creating Git tag $TAG using PAT"
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          # use PAT for pushing
-          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
-          git tag -a "$TAG" -m "Release $TAG"
-          git push origin "$TAG"
+      
 
-      - name: Create GitHub Release
-        if: env.CREATE_TAG == 'True'
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ env.VERSION }}
-          name: Release v${{ env.VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload distributions to GitHub Release
-        if: env.CREATE_TAG == 'True'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/*   # upload all built binaries (.whl and .tar.gz)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
