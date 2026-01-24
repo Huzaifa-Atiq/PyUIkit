@@ -1,4 +1,4 @@
-name: PyUIKit testing + Release
+name: PyUIKit Testing + Release
 
 on:
   push:
@@ -29,10 +29,10 @@ jobs:
       - name: Run tests
         run: pytest tests
 
-  # 2️⃣ Release job (runs only if test job passes)
+  # 2️⃣ Release job
   release:
     runs-on: ubuntu-latest
-    needs: test  # only run if tests passed
+    needs: test
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -50,26 +50,53 @@ jobs:
       - name: Get current version from setup.py
         id: get_version
         run: |
-          VERSION=$(python -c "import re; import setuptools; f=open('setup.py'); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f.read()).group(1))")
-          echo "Version=${VERSION}" >> $GITHUB_ENV
+          VERSION=$(python -c "import re; f=open('setup.py'); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f.read()).group(1))")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      # in YAML
-      - name: Check if version changed
-        id: version_check
+      - name: Read release flags
+        id: release_flags
         run: |
-          git fetch --tags  # make sure all remote tags are available
-          LAST_TAG=$(git describe --tags --abbrev=0 || echo "0.0.0")
-          echo "Last tag: $LAST_TAG"
-          echo "Current version: $VERSION"
-          if [ "$LAST_TAG" = "v$VERSION" ]; then
-            echo "Version not changed, skipping release."
-            exit 78
-          fi
+          FLAGS=$(python -c "from release_flag import UPLOAD_TO_PYPI, CREATE_TAG; print(f'{UPLOAD_TO_PYPI},{CREATE_TAG}')")
+          IFS=',' read UPLOAD TAG <<< "$FLAGS"
+          echo "UPLOAD_TO_PYPI=$UPLOAD" >> $GITHUB_ENV
+          echo "CREATE_TAG=$TAG" >> $GITHUB_ENV
 
       - name: Build distribution
+        if: env.UPLOAD_TO_PYPI == 'True' || env.CREATE_TAG == 'True'
         run: python -m build
 
       - name: Publish to PyPI
+        if: env.UPLOAD_TO_PYPI == 'True'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Create Git tag
+        if: env.CREATE_TAG == 'True'
+        env:
+          VERSION: ${{ env.VERSION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="v$VERSION"
+          echo "Creating Git tag $TAG"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+
+      - name: Create GitHub Release
+        if: env.CREATE_TAG == 'True'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: Release v${{ env.VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload distributions to GitHub Release
+        if: env.CREATE_TAG == 'True'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*   # upload all built binaries (.whl and .tar.gz)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

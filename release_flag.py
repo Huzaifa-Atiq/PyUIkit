@@ -1,0 +1,2 @@
+UPLOAD_TO_PYPI = False
+CREATE_TAG = False
