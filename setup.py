@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyuikit",
-    version="1.1.1",
+    version="1.1.2b",
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
