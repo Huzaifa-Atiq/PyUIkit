@@ -53,15 +53,17 @@ jobs:
           VERSION=$(python -c "import re; import setuptools; f=open('setup.py'); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f.read()).group(1))")
           echo "Version=${VERSION}" >> $GITHUB_ENV
 
+      # in YAML
       - name: Check if version changed
         id: version_check
         run: |
+          git fetch --tags  # make sure all remote tags are available
           LAST_TAG=$(git describe --tags --abbrev=0 || echo "0.0.0")
           echo "Last tag: $LAST_TAG"
           echo "Current version: $VERSION"
           if [ "$LAST_TAG" = "v$VERSION" ]; then
             echo "Version not changed, skipping release."
-            exit 78  # neutral
+            exit 78
           fi
 
       - name: Build distribution
